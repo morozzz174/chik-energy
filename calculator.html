@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Калькулятор автономии — ЧИК ЭНЕРГИЯ</title>
+  <meta name="description" content="Онлайн-калькулятор автономии: рассчитайте, сколько проработает аккумулятор LiFePO4 на Вашем объекте, и получите рекомендацию комплекта ИБП или ESS.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">⚡</span>
+        <span>ЧИК ЭНЕРГИЯ<small>Челябинская инженерная компания</small></span>
+      </a>
+      <nav class="nav">
+        <a href="index.html">Главная</a>
+        <a href="catalog.html">Каталог</a>
+        <a href="services.html">Монтаж</a>
+        <a href="calculator.html" class="active">Калькулятор</a>
+        <a href="contacts.html">Контакты</a>
+      </nav>
+      <a class="header-phone" href="tel:+73512309996">
+        <strong>+7 351 230-99-96</strong>
+        <span>Челябинск, звонок по области</span>
+      </a>
+      <a href="tel:+73512309996" class="btn btn-primary btn-sm">Позвонить</a>
+      <button class="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow">Онлайн-инструмент</span>
+        <h1>Калькулятор <span class="text-grad">автономии</span></h1>
+        <p class="lead">Отметьте приборы, которые должны работать без электричества, и выберите ёмкость аккумулятора — покажем время автономии и подходящий комплект.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container calc" data-calc>
+        <div class="calc-panel reveal">
+          <h3>1. Что должно работать при отключении</h3>
+          <div class="appliances" data-appliances></div>
+
+          <h3 style="margin-top:34px">2. Ёмкость аккумулятора</h3>
+          <p class="lead" style="font-size:14px;margin-bottom:14px">Один модуль LiFePO4 51,2 В / 100 А·ч = 5,12 кВт·ч. Чем больше модулей — тем дольше автономия.</p>
+          <div class="battery-opts" data-battery></div>
+
+          <div class="note-box" style="margin-top:26px">
+            <b>Как считаем:</b> берём 95% глубины разряда (DOD) и КПД инвертора 92% — расчёт близок к реальному. Точные цифры зависят от температуры и режима работы котла.
+          </div>
+        </div>
+
+        <div class="result-card reveal">
+          <span class="eyebrow">Ваш результат</span>
+          <div style="color:var(--muted);font-size:14px;margin-top:10px">Суммарная нагрузка</div>
+          <div class="big" data-out-power>—</div>
+
+          <div style="color:var(--muted);font-size:14px;margin-top:18px">Время автономии</div>
+          <div class="big" data-out-hours>—</div>
+          <div style="color:var(--muted);font-size:14px;margin-top:6px">≈ <span data-out-days>—</span> непрерывной работы</div>
+
+          <div class="mt-24">
+            <div class="result-row"><span>Полезная ёмкость</span><b data-out-energy>—</b></div>
+            <div class="result-row"><span>Формула</span><b>кВт·ч × 0,95 × 0,92</b></div>
+          </div>
+
+          <div class="reco">
+            <b>Рекомендуемый комплект</b>
+            <p data-out-reco>Отметьте приборы — покажем подходящий комплект.</p>
+          </div>
+
+          <a href="contacts.html" class="btn btn-primary btn-block" style="margin-top:20px">Получить точный расчёт</a>
+          <a href="tel:+73512309996" class="btn btn-ghost btn-block" style="margin-top:10px">Позвонить: +7 351 230-99-96</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="background:var(--bg-soft)">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Справка</span>
+          <h2>Ориентировочная автономия по приборам</h2>
+          <p class="lead">Для батареи 5,12 кВт·ч при t = 20 °C.</p>
+        </div>
+        <div class="table-wrap reveal">
+          <table>
+            <thead>
+              <tr><th>Нагрузка</th><th>Мощность</th><th>Время автономии</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Газовый котёл + насосы</td><td>100–200 Вт</td><td><strong>25–50 часов</strong></td></tr>
+              <tr><td>Холодильник</td><td>150–300 Вт</td><td><strong>17–34 часа</strong></td></tr>
+              <tr><td>Освещение (LED)</td><td>50–100 Вт</td><td><strong>50–100 часов</strong></td></tr>
+              <tr><td>Роутер + сигнализация</td><td>20–50 Вт</td><td><strong>100+ часов</strong></td></tr>
+              <tr><td>Насос водоснабжения</td><td>500–1000 Вт</td><td><strong>5–10 часов</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="cta-band mt-40 reveal">
+          <div>
+            <h2>Нужен расчёт по Вашему дому?</h2>
+            <p>Инженер выедет на объект, замерит нагрузку и составит смету под ключ — бесплатно.</p>
+          </div>
+          <a href="contacts.html" class="btn btn-primary">Записаться на расчёт</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="logo" style="margin-bottom:16px">
+            <span class="logo-icon">⚡</span>
+            <span>ЧИК ЭНЕРГИЯ<small>Челябинская инженерная компания</small></span>
+          </a>
+          <p>Продажа и установка систем резервного питания, аккумуляторов LiFePO4 и ESS-систем в Челябинске и Челябинской области.</p>
+        </div>
+        <div>
+          <h4>Разделы</h4>
+          <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="services.html">Монтаж и услуги</a></li>
+            <li><a href="calculator.html">Калькулятор автономии</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Оборудование</h4>
+          <ul>
+            <li><a href="catalog.html#standart">ИБП-комплекты «Стандарт»</a></li>
+            <li><a href="catalog.html#premium">ESS «Премиум»</a></li>
+            <li><a href="catalog.html#accu">Аккумуляторы LiFePO4</a></li>
+            <li><a href="catalog.html#inverters">Инверторы и гибриды</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Контакты</h4>
+          <ul>
+            <li><a href="tel:+73512309996"><b>+7 351 230-99-96</b></a></li>
+            <li>г. Челябинск, Челябинская область</li>
+            <li>Монтаж по всему Южному Уралу</li>
+          </ul>
+          <a href="tel:+73512309996" class="btn btn-primary btn-sm" style="margin-top:10px">Позвонить</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 ЧИК ЭНЕРГИЯ — Челябинская инженерная компания. Все права защищены.</span>
+        <span>Расчёты калькулятора ориентировочные и уточняются инженером.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/calculator.js"></script>
+</body>
+</html>

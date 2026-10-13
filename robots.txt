@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://morozzz174.github.io/chik-energy/sitemap.xml

@@ -50,21 +50,47 @@
     });
   });
 
+  var FORMSPREE = "https://formsubmit.co/chik174@yandex.ru";
+
   document.querySelectorAll("form[data-form]").forEach(function (form) {
+    var success = form.querySelector(".form-success");
+    var error = form.querySelector(".form-error");
+    var btn = form.querySelector('button[type="submit"]');
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
+      if (error) error.classList.remove("show");
+
       var name = form.querySelector('[name="name"]');
       var phone = form.querySelector('[name="phone"]');
-      var ok = true;
-      if (name && !name.value.trim()) { name.focus(); ok = false; }
-      else if (phone && phone.value.replace(/\D/g, "").length < 10) { phone.focus(); ok = false; }
-      if (!ok) return;
-      var success = form.querySelector(".form-success");
-      if (success) success.classList.add("show");
-      form.reset();
-      setTimeout(function () {
-        if (success) success.classList.remove("show");
-      }, 6000);
+      if (name && !name.value.trim()) { name.focus(); return; }
+      if (phone && phone.value.replace(/\D/g, "").length < 10) { phone.focus(); return; }
+
+      if (btn) { btn.disabled = true; btn.textContent = "Отправляем..."; }
+
+      var data = new FormData(form);
+
+      fetch(FORMSPREE, {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" }
+      })
+        .then(function (r) {
+          if (btn) { btn.disabled = false; btn.textContent = "Отправить заявку"; }
+          if (r.ok) {
+            form.reset();
+            if (success) success.classList.add("show");
+            setTimeout(function () {
+              if (success) success.classList.remove("show");
+            }, 8000);
+          } else {
+            throw new Error("bad response");
+          }
+        })
+        .catch(function () {
+          if (btn) { btn.disabled = false; btn.textContent = "Отправить заявку"; }
+          if (error) error.classList.add("show");
+        });
     });
   });
 })();

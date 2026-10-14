@@ -1010,3 +1010,38 @@ td strong { color: var(--text); }
   .footer-grid { grid-template-columns: 1fr; }
   .hero { padding: 60px 0; }
 }
+
+/* Wide screens */
+@media (min-width: 1440px) {
+  :root { --container: 1400px; }
+
+  .section { padding: 110px 0; }
+  .section-tight { padding: 72px 0; }
+
+  h2 { font-size: clamp(40px, 3.2vw, 52px); }
+  h3 { font-size: 26px; }
+  .lead { font-size: 18px; }
+
+  .section-head { max-width: 780px; margin-bottom: 60px; }
+
+  .hero { padding: 110px 0 120px; }
+  .hero h1 { font-size: clamp(54px, 4vw, 64px); }
+  .hero .lead { font-size: 19px; }
+  .hero-grid { gap: 60px; }
+  .hero-price .val { font-size: 44px; }
+  .stat b { font-size: 30px; }
+
+  .grid-2, .grid-3 { gap: 28px; }
+  .grid-4 { gap: 24px; }
+  .steps { gap: 24px; }
+  .card { padding: 32px; }
+  .product { padding: 34px; }
+  .product .price { font-size: 34px; }
+
+  .result-card .big { font-size: 50px; }
+  .cta-band { padding: 64px; }
+  .footer-grid { gap: 44px; }
+
+  .page-hero { padding: 72px 0 52px; }
+  .page-hero h1 { font-size: clamp(46px, 3.6vw, 54px); }
+}

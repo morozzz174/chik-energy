@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Выбор ячеек EVE LiFePO4: напряжение системы, инвертор и сценарий | ЧИК ЭНЕРГИЯ</title>
+  <meta name="description" content="Как выбрать напряжение батарейной сборки (12/24/48 В) под мощность инвертора и ячейки EVE LiFePO4 (LF105, LF230, LF280K, LF304, MB31) под сценарий: квартира, дом с солнечными панелями, коммерческий объект. Готовые конфигурации 16S, токи, BMS и кабели.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta property="og:title" content="Выбор ячеек EVE LiFePO4: напряжение системы и сценарий">
+  <meta property="og:description" content="12/24/48 В под инвертор, сравнение LF105–MB31, готовые сборки 16S для квартиры, дома и коммерции.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://morozzz174.github.io/chik-energy/cell-selection.html">
+  <meta property="og:locale" content="ru_RU">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">⚡</span>
+        <span>ЧИК ЭНЕРГИЯ<small>Челябинская инженерная компания</small></span>
+      </a>
+      <nav class="nav">
+        <a href="index.html">Главная</a>
+        <a href="catalog.html">Каталог</a>
+        <div class="has-sub">
+          <a href="#" class="active">База знаний <span class="caret">▾</span></a>
+          <div class="sub">
+            <a href="cells.html">Ячейки LiFePO4</a>
+            <a href="cell-selection.html" class="active">Выбор ячеек</a>
+            <a href="solar-panels.html">Солнечные панели</a>
+            <a href="cables-safety.html">Кабели и защита</a>
+            <a href="wiring.html">Схемы подключения</a>
+          </div>
+        </div>
+        <a href="services.html">Монтаж</a>
+        <a href="calculator.html">Калькулятор</a>
+        <a href="contacts.html">Контакты</a>
+      </nav>
+      <a class="header-phone" href="tel:+73512309996">
+        <strong>+7 351 230-99-96</strong>
+        <span>Челябинск, звонок по области</span>
+      </a>
+      <a href="tel:+73512309996" class="btn btn-primary btn-sm">Позвонить</a>
+      <button class="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow">Подбор под задачу</span>
+        <h1>Выбор ячеек EVE: <span class="text-grad">напряжение и сценарий</span></h1>
+        <p class="lead">Переход от отдельных ячеек к полноценной системе — этап, где решают не только ампер-часы, но и напряжение сборки, мощность инвертора и сценарий использования. Правило одно: чем выше мощность нагрузки, тем выше должно быть напряжение батареи — тогда токи остаются в безопасных пределах.</p>
+      </div>
+    </section>
+
+    <section class="section" id="voltage-choice">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Отправная точка</span>
+          <h2>Напряжение системы и мощность инвертора</h2>
+          <p class="lead">Прежде чем выбирать конкретную ячейку EVE, определите напряжение будущей сборки. Закономерность устойчивая:</p>
+        </div>
+        <div class="grid-3">
+          <div class="card volt-card reveal">
+            <div class="stat"><b>12 В</b><span>4S · до 1,5–2 кВт</span></div>
+            <h3 class="mt-24">Для небольших нагрузок</h3>
+            <p>Освещение, роутер, небольшой насос. Для серьёзного резерва или солнечной станции уже слабоват из-за высоких токов.</p>
+          </div>
+          <div class="card volt-card reveal">
+            <div class="stat"><b>24 В</b><span>8S · 2–3 кВт</span></div>
+            <h3 class="mt-24">Разумный компромисс</h3>
+            <p>Базовый ИБП для квартиры: котёл, холодильник, свет. Или небольшая автономная система.</p>
+          </div>
+          <div class="card volt-card reveal">
+            <div class="stat"><b>48 В</b><span>16S · от 5 кВт</span></div>
+            <h3 class="mt-24">Стандарт де-факто</h3>
+            <p>Для дома и коммерции. Гибридные инверторы 5 кВт и выше практически все рассчитаны на 48-вольтовые батареи (рабочий диапазон ~40–60 В).</p>
+          </div>
+        </div>
+        <div class="sp-panel mt-40 reveal" style="max-width:760px;margin-inline:auto">
+          <h3>Почему для мощных систем предпочитают 48 В</h3>
+          <div class="cells-figure">
+            <svg class="cells-svg" viewBox="0 0 520 120" role="img" aria-label="Ток инвертора 5000 Вт: при 48 вольтах около 125 ампер, при 24 вольтах 250 ампер">
+              <text x="0" y="18" font-size="13">Инвертор 5 000 Вт</text>
+              <rect class="cell hot" x="128" y="6" width="125" height="16" rx="8"/>
+              <text x="258" y="18" font-size="13" class="acc">48 В → ~125 А</text>
+              <rect class="cell cool" x="128" y="52" width="250" height="16" rx="8"/>
+              <text x="384" y="64" font-size="13" class="acc">24 В → ~250 А</text>
+              <text x="0" y="100" font-size="12" class="big">Одинаково 250 А?</text>
+              <text x="0" y="118" font-size="12">Двойной ток — вдвое толще кабели, мощнее BMS и больше тепла.</text>
+            </svg>
+          </div>
+          <p>Инвертор 5 000 Вт при 48 В потребляет около 125 А с запасом. Та же мощность с 24-вольтовой батареи — уже 250 А: потребовались бы значительно более толстые кабели, более мощная BMS, больше тепла. Поэтому для дома с солнечными панелями и коммерческих объектов далее рассматриваем конфигурации на 48 В (16S).</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cells-ess" style="background:var(--bg-soft)">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Линейка</span>
+          <h2>Ячейки EVE, которые имеют смысл для ESS</h2>
+          <p class="lead">Для систем хранения энергии подходят элементы, ориентированные на длительный ресурс и умеренные токи.</p>
+        </div>
+        <div class="table-wrap reveal">
+          <table>
+            <thead>
+              <tr><th>Модель</th><th>Ёмкость</th><th>Энергия</th><th>Ресурс (до 80%)</th><th>Роль в системе</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>EVE LF105</strong></td><td>105 А·ч</td><td>~336 Вт·ч</td><td>~4 000 циклов</td>
+                <td>Компактность и гибкость: меньший шаг по ёмкости, легче обслуживать модули. Для стартовых и распределённых систем.</td>
+              </tr>
+              <tr>
+                <td><strong>EVE LF230</strong></td><td>230 А·ч</td><td>~736 Вт·ч</td><td>~3 500–4 000 циклов</td>
+                <td>Промежуточный вариант между компактными и крупными ESS-ячейками: средняя ёмкость без габаритов 280-й серии.</td>
+              </tr>
+              <tr>
+                <td style="color:var(--green);font-weight:700">EVE LF280K ⭐</td><td>280 А·ч</td><td>~896 Вт·ч</td><td>~6 000–8 000 циклов</td>
+                <td>Проверенная «рабочая лошадка»: огромная база готовых решений, совместимость с большинством корпусов и BMS. Оптимум по цене/ресурсу/доступности.</td>
+              </tr>
+              <tr>
+                <td><strong>EVE LF304</strong></td><td>304 А·ч</td><td>~973 Вт·ч</td><td>~3 500–6 000 циклов</td>
+                <td>Альтернатива 280-й: немного больше энергии на ячейку, но требует проверки совместимости с корпусом и охлаждением.</td>
+              </tr>
+              <tr>
+                <td style="color:var(--accent);font-weight:700">EVE MB31 ⭐</td><td>314 А·ч</td><td>~1 005 Вт·ч</td><td>до 8 000 циклов</td>
+                <td>Максимальная энергия на ячейку: минимум веса и габаритов на киловатт-час, максимальный ресурс. Лучший выбор для новых проектов.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="scenarios">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Готовые схемы</span>
+          <h2>Конфигурации для разных объектов</h2>
+          <p class="lead">Все сборки ниже — последовательное соединение 16S на номинал 51,2 В. Различаются только ячейки и параллелизм.</p>
+        </div>
+
+        <div class="product reveal">
+          <h3>1. Квартира или небольшой дом — резервное питание</h3>
+          <p class="sub">Инвертор 2–3 кВт (или гибрид 3–5 кВт с перспективой): котёл, холодильник, свет, интернет. Солнце — позже.</p>
+          <div class="table-wrap" style="background:transparent;border:0">
+            <table>
+              <thead><tr><th>Конфигурация</th><th>Ёмкость</th><th>Энергия</th><th>Комментарий</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><strong>16S1P на LF105</strong></td><td>51,2 В / 105 А·ч</td><td>~5,4 кВт·ч</td>
+                  <td>Компактный недорогой старт: несколько часов работы базовых потребителей. Ток разряда для инвертора 3 кВт — в пределах 60 А, что легко для LF105.</td>
+                </tr>
+                <tr>
+                  <td><strong>16S1P на LF230</strong></td><td>51,2 В / 230 А·ч</td><td>~11,8 кВт·ч</td>
+                  <td>«Золотая середина» для квартиры: сутки автономии и более при экономном потреблении, без избыточного веса и стоимости.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="note-box mt-24">
+            <b>Важно для квартиры:</b> LiFePO4 — одна из самых безопасных химий для дома, но при установке в жилом помещении (особенно на балконе или в нише) выбирайте компоненты с сертификацией (IEC 62619, в ряде регионов UL 9540) и предусматривайте вентиляцию. Не размещайте самосборную батарею в единственном эвакуационном проходе.
+          </div>
+        </div>
+
+        <div class="product featured mt-24 reveal">
+          <span class="tag">Популярный сценарий</span>
+          <h3>2. Дом с солнечными панелями — гибридная система</h3>
+          <p class="sub">Гибридный инвертор 5 кВт (типичный пример — Deye) с MPPT: покрытие вечерне-ночного потребления + резерв на отключения.</p>
+          <div class="table-wrap" style="background:transparent;border:0">
+            <table>
+              <thead><tr><th>Конфигурация</th><th>Ёмкость</th><th>Энергия</th><th>Комментарий</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><strong>16S1P на LF280K</strong></td><td>51,2 В / 280 А·ч</td><td>~14,3 кВт·ч</td>
+                  <td>Базовая рекомендация для дома: хватает большинству семей — ночное потребление и несколько часов резерва. Огромный выбор BMS, корпусов и инструкций.</td>
+                </tr>
+                <tr>
+                  <td><strong>16S1P на MB31</strong></td><td>51,2 В / 314 А·ч</td><td>~16,0 кВт·ч</td>
+                  <td>Максимум энергии в том же форм-факторе: больше кВт·ч на той же 16-ячеечной платформе и ресурс до 8 000 циклов.</td>
+                </tr>
+                <tr>
+                  <td><strong>16S2P на LF280K</strong></td><td>51,2 В / 560 А·ч</td><td>~28,7 кВт·ч</td>
+                  <td>Энергонезависимость с запасом: несколько пасмурных дней подряд или мощные нагрузки (например, зарядка электромобиля) без глубокого разряда.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="product mt-24 reveal">
+          <h3>3. Коммерческий объект — 50–100+ кВт·ч</h3>
+          <p class="sub">Сглаживание пиков потребления, резервирование, солнечная электростанция. Сборки в серверных шкафах (rackmount).</p>
+          <div class="table-wrap" style="background:transparent;border:0">
+            <table>
+              <thead><tr><th>Конфигурация</th><th>Ёмкость</th><th>Энергия</th><th>Комментарий</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><strong>16S10P на LF280K</strong></td><td>51,2 В / 2 800 А·ч</td><td>~143 кВт·ч</td>
+                  <td>Классическая «шкафная» конфигурация: 10 параллельных цепочек по 16 ячеек. Так устроены готовые коммерческие стойки на 100–150 кВт·ч.</td>
+                </tr>
+                <tr>
+                  <td><strong>Модули на MB31 / LF304</strong></td><td>зависит от шкафа</td><td>~100 кВт·ч</td>
+                  <td>Готовые шкафы на ячейках 314 А·ч: производители коммерческих ESS переходят на 304–314 А·ч, чтобы уменьшить число параллельных цепочек и упростить обслуживание.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <ul class="mt-24" style="display:grid;gap:10px">
+            <li style="color:var(--muted);font-size:14.5px;display:flex;gap:10px"><span style="color:var(--accent)">▸</span> Масштабирование: BMS 4-го поколения (например, Daly) поддерживают до 16 блоков параллельно — ёмкость наращивается поэтапно, от шкафа к шкафу.</li>
+            <li style="color:var(--muted);font-size:14.5px;display:flex;gap:10px"><span style="color:var(--accent)">▸</span> Безопасность: для коммерции критичны сертификаты системы или модуля (IEC 62619, UL 9540) и многоуровневая защита: BMS + предохранители + термоменеджмент.</li>
+            <li style="color:var(--muted);font-size:14.5px;display:flex;gap:10px"><span style="color:var(--accent)">▸</span> Высоковольтные стойки (400 В) применяют на сотнях кВт·ч — топология та же, отличает их BMS. Для DIY 48-вольтовые шкафы остаются самым доступным и ремонтопригодным решением.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="tech-details" style="background:var(--bg-soft)">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Инженерные детали</span>
+          <h2>Что учесть в 48-вольтовой системе</h2>
+        </div>
+        <div class="grid-3">
+          <div class="card reveal">
+            <div class="icon">🛡️</div>
+            <h3>BMS 100–200 А</h3>
+            <p>Для 16S-сборок оптимальны платы с непрерывным током 100–200 А — например, серии Daly LK/LM или JKBMS с активной балансировкой. Инвертор 5 кВт тянет ~125 А — берите BMS с запасом, 150 или 200 А.</p>
+          </div>
+          <div class="card reveal">
+            <div class="icon blue">🔌</div>
+            <h3>Кабели по току</h3>
+            <p>При токе 150 А нужен медный кабель сечением около 18 мм² (из расчёта 8 А/мм²). Шины и клеммы — с рекомендованным моментом затяжки.</p>
+          </div>
+          <div class="card reveal">
+            <div class="icon green">📡</div>
+            <h3>Связь с инвертором</h3>
+            <p>Современные BMS говорят с инверторами по CAN/RS485 (Deye, Victron, Growatt): инвертор корректно видит состояние батареи и управляет зарядом.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="algorithm">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Итоговая логика</span>
+          <h2>Короткий алгоритм выбора</h2>
+        </div>
+        <div class="steps">
+          <div class="step reveal">
+            <h3>Мощность инвертора</h3>
+            <p>2–3 кВт (квартира) — достаточно 24 или 48 В на LF105/LF230. 5 кВт и выше (дом с солнцем) — только 48 В (16S).</p>
+          </div>
+          <div class="step reveal">
+            <h3>Дом с солнцем</h3>
+            <p>Берите 16S1P на LF280K как проверенную базу; хотите максимум энергии и ресурса в тех же габаритах — 16S1P на MB31.</p>
+          </div>
+          <div class="step reveal">
+            <h3>Коммерция</h3>
+            <p>Стройте систему вокруг 16S-цепочек с параллелизмом (16S2P…16S10P) на LF280K/LF304/MB31 с BMS, поддерживающим параллельное расширение и связь с инвертором.</p>
+          </div>
+          <div class="step reveal">
+            <h3>Безопасность</h3>
+            <p>Для квартиры и коммерции — сертифицированные компоненты (IEC 62619, UL 9540) и защита от перегрева и короткого замыкания. Ячейки EVE безопасны, итог — качество сборки и BMS.</p>
+          </div>
+        </div>
+        <div class="note-box mt-24 reveal">
+          <b>А что с солнечными панелями?</b> Бренды, мощности и цены комплектов под инвертор 3–5 кВт — на странице <a href="solar-panels.html">«Солнечные панели»</a>.
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight">
+      <div class="container">
+        <div class="cta-band reveal">
+          <div>
+            <h2>Подберём конфигурацию под Ваш инвертор</h2>
+            <p>Посчитаем токи, выберем ячейки и BMS, соберём и установим батарею под ключ в Челябинске и области.</p>
+          </div>
+          <a href="contacts.html" class="btn btn-primary">Получить расчёт</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="logo" style="margin-bottom:16px">
+            <span class="logo-icon">⚡</span>
+            <span>ЧИК ЭНЕРГИЯ<small>Челябинская инженерная компания</small></span>
+          </a>
+          <p>Продажа и установка систем резервного питания, аккумуляторов LiFePO4 и ESS-систем в Челябинске и Челябинской области.</p>
+        </div>
+        <div>
+          <h4>Разделы</h4>
+          <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="services.html">Монтаж и услуги</a></li>
+            <li><a href="calculator.html">Калькулятор автономии</a></li>
+            <li><a href="useful.html">Полезное</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Оборудование</h4>
+          <ul>
+            <li><a href="catalog.html#standart">ИБП-комплекты «Стандарт»</a></li>
+            <li><a href="catalog.html#premium">ESS «Премиум»</a></li>
+            <li><a href="catalog.html#accu">Аккумуляторы LiFePO4</a></li>
+            <li><a href="cells.html">Ячейки EVE и сборки батарей</a></li>
+            <li><a href="cell-selection.html">Выбор ячеек под инвертор</a></li>
+            <li><a href="solar-panels.html">Солнечные панели Tier-1</a></li>
+            <li><a href="cables-safety.html">Кабели, автоматы и защита</a></li>
+            <li><a href="wiring.html">Схемы подключения узлов</a></li>
+            <li><a href="catalog.html#inverters">Инверторы и гибриды</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Контакты</h4>
+          <ul>
+            <li><a href="tel:+73512309996"><b>+7 351 230-99-96</b></a></li>
+            <li>г. Челябинск, Челябинская область</li>
+            <li>Монтаж по всему Южному Уралу</li>
+          </ul>
+          <a href="tel:+73512309996" class="btn btn-primary btn-sm" style="margin-top:10px">Позвонить</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 ЧИК ЭНЕРГИЯ — Челябинская инженерная компания. Все права защищены. <a href="policy.html">Политика обработки ПДн</a></span>
+        <span>Цены на сайте ориентировочные и уточняются расчётом по объекту.</span>
+      </div>
+    </div>
+  </footer>
+
+  <a href="tel:+73512309996" class="float-call">📞 Позвонить</a>
+
+  <script src="js/main.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Выбор ячеек EVE LiFePO4: напряжение системы, инвертор и сценарий",
+    "description": "12/24/48 В под мощность инвертора, сравнение LF105, LF230, LF280K, LF304, MB31 и готовые конфигурации 16S для квартиры, дома и коммерции.",
+    "url": "https://morozzz174.github.io/chik-energy/cell-selection.html",
+    "author": { "@type": "Organization", "name": "ЧИК ЭНЕРГИЯ — Челябинская инженерная компания" },
+    "publisher": { "@type": "Organization", "name": "ЧИК ЭНЕРГИЯ" }
+  }
+  </script>
+</body>
+</html>

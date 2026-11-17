@@ -1045,3 +1045,142 @@ td strong { color: var(--text); }
   .page-hero { padding: 72px 0 52px; }
   .page-hero h1 { font-size: clamp(46px, 3.6vw, 54px); }
 }
+
+/* Battery cells page (cells.html) */
+.sp-panels { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+.sp-panel {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: 26px;
+}
+
+.sp-panel p { color: var(--muted); font-size: 15px; margin-top: 10px; }
+
+.sp-formula {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: rgba(255, 176, 32, 0.1);
+  border: 1px solid rgba(255, 176, 32, 0.3);
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 14px;
+  margin: 4px 6px 4px 0;
+}
+
+.sp-formula.blue {
+  background: rgba(47, 128, 255, 0.12);
+  border-color: rgba(47, 128, 255, 0.35);
+  color: var(--blue);
+}
+
+.cells-figure { margin: 20px 0 8px; }
+
+.cells-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  color: var(--accent);
+}
+
+.cells-svg .cell {
+  fill: rgba(255, 255, 255, 0.07);
+  stroke: rgba(255, 255, 255, 0.3);
+  stroke-width: 1.5;
+}
+
+.cells-svg .cell.hot {
+  fill: rgba(255, 176, 32, 0.16);
+  stroke: rgba(255, 176, 32, 0.6);
+}
+
+.cells-svg .cell.cool {
+  fill: rgba(47, 128, 255, 0.14);
+  stroke: rgba(47, 128, 255, 0.55);
+}
+
+.cells-svg .wire { stroke: currentColor; stroke-width: 2.5; fill: none; stroke-linecap: round; }
+
+.cells-svg .wire.thin { stroke-width: 1.6; opacity: 0.75; }
+
+.cells-svg .term { fill: currentColor; }
+
+.cells-svg text { fill: var(--muted); font-family: inherit; font-weight: 600; }
+
+.cells-svg text.big { fill: var(--text); font-size: 19px; font-weight: 800; }
+
+.cells-svg text.acc { fill: currentColor; font-weight: 800; }
+
+.volt-card { text-align: center; }
+
+.volt-card .cells-figure { max-width: 420px; margin-inline: auto; }
+
+.cell-mini {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  padding: 22px;
+}
+
+.cell-mini b { color: var(--accent); }
+
+.cell-mini p { color: var(--muted); font-size: 14.5px; margin-top: 8px; }
+
+@media (max-width: 640px) {
+  .sp-panels { grid-template-columns: 1fr; }
+}
+
+/* Компактное меню: 8 пунктов на десктопе */
+@media (min-width: 981px) and (max-width: 1439px) {
+  .nav { gap: 18px; }
+  .nav a { font-size: 14px; }
+}
+
+/* Выпадающее меню "База знаний" */
+.nav .has-sub { position: relative; }
+.nav .caret { font-size: 10px; opacity: 0.7; margin-left: 2px; }
+.nav .sub {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: -16px;
+  min-width: 220px;
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px;
+  background: rgba(11, 17, 32, 0.98);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  z-index: 60;
+}
+.nav .has-sub::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: -20px;
+  right: -20px;
+  height: 14px;
+}
+.nav .has-sub:hover .sub,
+.nav .has-sub:focus-within .sub { display: flex; }
+.nav .sub a { font-size: 14px; font-weight: 600; padding: 9px 12px; border-radius: 10px; white-space: nowrap; }
+.nav .sub a:hover { background: rgba(255, 255, 255, 0.05); }
+.nav .sub a.active { color: var(--text); }
+
+@media (max-width: 980px) {
+  .nav .has-sub { display: block; }
+  .nav .has-sub::after { display: none; }
+  .nav .sub {
+    display: flex;
+    position: static;
+    min-width: 0;
+    padding: 0 0 0 16px;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+  .nav .sub a { padding: 10px 8px; font-size: 15px; }
+}

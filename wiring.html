@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Схемы подключения: панели, батарея, инвертор, нагрузки | ЧИК ЭНЕРГИЯ</title>
+  <meta name="description" content="Схемы подключения гибридной системы на 48 В: стринги панелей на MPPT, батарея 16S через BMS и Class T, метод Тихельмана, шины для параллельных батарей, распределение нагрузок GRID/LOAD, параллельная работа инверторов и генератор.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta property="og:title" content="Схемы подключения гибридной системы 48 В">
+  <meta property="og:description" content="Архитектура «три зоны и один центр», схемы PV-стрингов, батареи, AC-распределения и расширения системы.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://morozzz174.github.io/chik-energy/wiring.html">
+  <meta property="og:locale" content="ru_RU">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">⚡</span>
+        <span>ЧИК ЭНЕРГИЯ<small>Челябинская инженерная компания</small></span>
+      </a>
+      <nav class="nav">
+        <a href="index.html">Главная</a>
+        <a href="catalog.html">Каталог</a>
+        <div class="has-sub">
+          <a href="#" class="active">База знаний <span class="caret">▾</span></a>
+          <div class="sub">
+            <a href="cells.html">Ячейки LiFePO4</a>
+            <a href="cell-selection.html">Выбор ячеек</a>
+            <a href="solar-panels.html">Солнечные панели</a>
+            <a href="cables-safety.html">Кабели и защита</a>
+            <a href="wiring.html" class="active">Схемы подключения</a>
+          </div>
+        </div>
+        <a href="services.html">Монтаж</a>
+        <a href="calculator.html">Калькулятор</a>
+        <a href="contacts.html">Контакты</a>
+      </nav>
+      <a class="header-phone" href="tel:+73512309996">
+        <strong>+7 351 230-99-96</strong>
+        <span>Челябинск, звонок по области</span>
+      </a>
+      <a href="tel:+73512309996" class="btn btn-primary btn-sm">Позвонить</a>
+      <button class="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow">Электромонтаж</span>
+        <h1>Схемы подключения: <span class="text-grad">от ячейки до щита</span></h1>
+        <p class="lead">Подробные схемы для всех основных узлов системы. Логика построения едина для любого масштаба — от квартиры до коммерции, различаются только способы соединения внутри узлов.</p>
+      </div>
+    </section>
+
+    <section class="section" id="architecture">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Общая архитектура</span>
+          <h2>Три зоны и один «центр»</h2>
+          <p class="lead">Любая гибридная система строится вокруг инвертора, который связывает три зоны.</p>
+        </div>
+        <div class="sp-panel reveal" style="max-width:820px;margin-inline:auto">
+          <div class="cells-figure">
+            <svg class="cells-svg" viewBox="0 0 580 240" role="img" aria-label="Архитектура: панели и батарея подключаются к инвертору по постоянному току, сеть и резервные нагрузки — по переменному">
+              <rect class="cell hot" x="30" y="30" width="130" height="48" rx="10"/>
+              <text x="95" y="50" font-size="13" text-anchor="middle" class="acc">Панели (стринги)</text>
+              <text x="95" y="68" font-size="10.5" text-anchor="middle">Производство DC</text>
+              <rect class="cell" x="30" y="160" width="130" height="48" rx="10"/>
+              <text x="95" y="180" font-size="13" text-anchor="middle" class="acc">Батарея 16S</text>
+              <text x="95" y="198" font-size="10.5" text-anchor="middle">Хранение DC</text>
+              <rect class="cell cool" x="430" y="30" width="130" height="48" rx="10"/>
+              <text x="495" y="50" font-size="13" text-anchor="middle" class="acc">Сеть GRID</text>
+              <text x="495" y="68" font-size="10.5" text-anchor="middle">двунаправленная связь</text>
+              <rect class="cell" x="430" y="160" width="130" height="48" rx="10"/>
+              <text x="495" y="180" font-size="13" text-anchor="middle" class="acc">LOAD / EPS</text>
+              <text x="495" y="198" font-size="10.5" text-anchor="middle">резерв, не гаснет</text>
+              <rect class="cell hot" x="215" y="90" width="150" height="70" rx="12"/>
+              <text x="290" y="118" font-size="15" text-anchor="middle" class="big">Инвертор</text>
+              <text x="290" y="140" font-size="10.5" text-anchor="middle">PV1/PV2 · BAT · GRID · LOAD</text>
+              <path class="wire" d="M160 54 H190 V110 H211"/>
+              <polygon class="term" points="215,110 204,104 204,116"/>
+              <path class="wire" d="M160 184 H190 V140 H211"/>
+              <polygon class="term" points="215,140 204,134 204,146"/>
+              <path class="wire" d="M365 110 H400 V54 H426"/>
+              <polygon class="term" points="430,54 419,48 419,60"/>
+              <path class="wire" d="M365 140 H400 V184 H426"/>
+              <polygon class="term" points="430,184 419,178 419,190"/>
+              <text x="10" y="18" font-size="11">DC-сторона</text>
+              <text x="470" y="18" font-size="11">AC-сторона</text>
+            </svg>
+          </div>
+          <ul style="display:grid;gap:10px;margin:12px 0 0">
+            <li style="color:var(--muted);font-size:14.5px;display:flex;gap:10px"><span style="color:var(--accent)">▸</span> <b>Производство (DC):</b> солнечные панели, соединённые в стринги, через защитный бокс приходят на входы PV1/PV2 инвертора.</li>
+            <li style="color:var(--muted);font-size:14.5px;display:flex;gap:10px"><span style="color:var(--accent)">▸</span> <b>Хранение (DC):</b> батарея 16S LiFePO4 через защитную аппаратуру подключается к клеммам BAT.</li>
+            <li style="color:var(--muted);font-size:14.5px;display:flex;gap:10px"><span style="color:var(--accent)">▸</span> <b>Распределение (AC):</b> два независимых выхода — GRID (двунаправленная связь с сетью) и LOAD/EPS (резервные нагрузки).</li>
+          </ul>
+        </div>
+        <div class="note-box mt-24 reveal">
+          <b>Ключевой принцип:</b> всё, что подключено к LOAD, защищено от отключения сети (в пределах мощности инвертора и заряда батареи). Всё, что осталось на прямом сетевом вводе, при аварии сети обесточивается.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pv" style="background:var(--bg-soft)">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">DC · сторона PV</span>
+          <h2>Схемы подключения солнечных панелей</h2>
+          <p class="lead">Панели соединяются последовательно в стринг для набора напряжения, а стринги — параллельно для увеличения тока. Каждый стринг заводится на отдельный вход MPPT инвертора.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card volt-card reveal">
+            <h3>Схема A · базовая</h3>
+            <p class="sub">Один стринг на один MPPT</p>
+            <div class="cells-figure">
+              <svg class="cells-svg" viewBox="0 0 340 120" role="img" aria-label="Четыре панели последовательно в один стринг на вход PV1">
+                <rect class="cell hot" x="20" y="30" width="42" height="52" rx="6"/>
+                <rect class="cell hot" x="82" y="30" width="42" height="52" rx="6"/>
+                <rect class="cell hot" x="144" y="30" width="42" height="52" rx="6"/>
+                <rect class="cell hot" x="206" y="30" width="42" height="52" rx="6"/>
+                <text x="41" y="60" font-size="11" text-anchor="middle">П1</text>
+                <text x="103" y="60" font-size="11" text-anchor="middle">П2</text>
+                <text x="165" y="60" font-size="11" text-anchor="middle">П3</text>
+                <text x="227" y="60" font-size="11" text-anchor="middle">П4</text>
+                <path class="wire thin" d="M62 56 H82 M124 56 H144 M186 56 H206"/>
+                <path class="wire" d="M248 56 H264 V38 H276"/>
+                <text x="262" y="30" font-size="10">(+)</text>
+                <path class="wire thin" d="M20 56 H14 V100 H306 V78"/>
+                <text x="262" y="92" font-size="10">(−)</text>
+                <rect class="cell cool" x="276" y="38" width="56" height="40" rx="8"/>
+                <text x="304" y="62" font-size="12" text-anchor="middle" class="acc">PV1</text>
+              </svg>
+            </div>
+            <p>Небольшой массив (4–8 панелей), когда напряжения одного стринга достаточно для рабочего диапазона MPPT (у Deye — обычно 150–425 В DC).</p>
+            <p class="mt-24"><b>Проверка:</b> сумма Voc панелей стринга не должна превышать максимальное входное напряжение инвертора (обычно 500 В DC для Deye).</p>
+          </div>
+          <div class="card volt-card reveal">
+            <h3>Схема B · параллельные стринги</h3>
+            <p class="sub">Два стринга на один MPPT</p>
+            <div class="cells-figure">
+              <svg class="cells-svg" viewBox="0 0 340 150" role="img" aria-label="Два стринга по две панели через Y-соединение на вход PV1">
+                <rect class="cell hot" x="30" y="20" width="42" height="40" rx="6"/>
+                <rect class="cell hot" x="92" y="20" width="42" height="40" rx="6"/>
+                <rect class="cell hot" x="30" y="70" width="42" height="40" rx="6"/>
+                <rect class="cell hot" x="92" y="70" width="42" height="40" rx="6"/>
+                <path class="wire thin" d="M72 40 H92 M72 90 H92"/>
+                <path class="wire" d="M134 40 H180 V65 H272"/>
+                <path class="wire" d="M134 90 H180 V65"/>
+                <circle class="term" cx="180" cy="65" r="4"/>
+                <text x="24" y="44" font-size="10">(−)</text>
+                <text x="24" y="94" font-size="10">(−)</text>
+                <rect class="cell cool" x="272" y="45" width="56" height="40" rx="8"/>
+                <text x="300" y="69" font-size="12" text-anchor="middle" class="acc">PV1</text>
+                <text x="10" y="140" font-size="11">Каждый стринг — через свой предохранитель (Isc × 1,56)</text>
+              </svg>
+            </div>
+            <p>Когда одного стринга не хватает по току/мощности, а напряжение уже оптимально. Соединение — через Y-коннекторы или бокс.</p>
+            <p class="mt-24"><b>Важно:</b> стринги должны быть идентичны по количеству и типу панелей, иначе возникнет рассогласование. При двух и более параллельных стрингах <b>обязательны предохранители</b> на каждом (номинал: Isc × 1,56).</p>
+          </div>
+          <div class="card volt-card reveal">
+            <h3>Схема C · два MPPT</h3>
+            <p class="sub">Наиболее гибкая</p>
+            <div class="cells-figure">
+              <svg class="cells-svg" viewBox="0 0 340 130" role="img" aria-label="Массив востока на PV1 и массив запада на PV2 работают независимо">
+                <rect class="cell hot" x="20" y="25" width="42" height="42" rx="6"/>
+                <rect class="cell hot" x="82" y="25" width="42" height="42" rx="6"/>
+                <rect class="cell hot" x="20" y="85" width="42" height="42" rx="6"/>
+                <rect class="cell hot" x="82" y="85" width="42" height="42" rx="6"/>
+                <path class="wire thin" d="M62 46 H82 M62 106 H82"/>
+                <path class="wire" d="M124 46 H246"/>
+                <path class="wire" d="M124 106 H246"/>
+                <rect class="cell cool" x="246" y="26" width="60" height="40" rx="8"/>
+                <rect class="cell cool" x="246" y="86" width="60" height="40" rx="8"/>
+                <text x="276" y="50" font-size="12" text-anchor="middle" class="acc">PV1</text>
+                <text x="276" y="110" font-size="12" text-anchor="middle" class="acc">PV2</text>
+                <text x="10" y="18" font-size="11">Восток</text>
+                <text x="10" y="78" font-size="11">Запад</text>
+              </svg>
+            </div>
+            <p>Инверторы Deye имеют два MPPT: можно подключить два разных массива (например, восточная и западная крыша), которые работают независимо.</p>
+            <p class="mt-24"><b>Эффект:</b> потери от неравномерной освещённости снижаются — каждое крыло отрабатывает свою солнечную активность.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="battery">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">DC · 48 В</span>
+          <h2>Схемы подключения батареи</h2>
+          <p class="lead">Самая критичная часть с точки зрения безопасности — последовательность защиты должна быть соблюдена строго.</p>
+        </div>
+
+        <div class="product reveal">
+          <h3>Схема D · одиночная батарея 16S</h3>
+          <p class="sub">Стандартная домашняя сборка на 5–15 кВт·ч. Порядок прохождения силовой линии — от плюса батареи к инвертору:</p>
+          <div class="cells-figure">
+            <svg class="cells-svg" viewBox="0 0 640 110" role="img" aria-label="Ячейки 16S, затем BMS по минусу, предохранитель Class T, DC-автомат, инвертор">
+              <rect class="cell" x="0" y="22" width="96" height="52" rx="10"/>
+              <text x="48" y="44" font-size="12.5" text-anchor="middle" class="acc">Ячейки 16S</text>
+              <text x="48" y="62" font-size="10" text-anchor="middle">3,2 В × 16</text>
+              <rect class="cell" x="122" y="22" width="84" height="52" rx="10"/>
+              <text x="164" y="44" font-size="12.5" text-anchor="middle" class="acc">BMS</text>
+              <text x="164" y="62" font-size="10" text-anchor="middle">разрывает минус</text>
+              <rect class="cell hot" x="232" y="22" width="104" height="52" rx="10"/>
+              <text x="284" y="44" font-size="12.5" text-anchor="middle" class="acc">Class T</text>
+              <text x="284" y="62" font-size="10" text-anchor="middle">предохранитель</text>
+              <rect class="cell" x="362" y="22" width="112" height="52" rx="10"/>
+              <text x="418" y="44" font-size="12.5" text-anchor="middle" class="acc">DC-автомат</text>
+              <text x="418" y="62" font-size="10" text-anchor="middle">разъединитель</text>
+              <rect class="cell cool" x="500" y="22" width="104" height="52" rx="10"/>
+              <text x="552" y="44" font-size="12.5" text-anchor="middle" class="acc">Инвертор</text>
+              <text x="552" y="62" font-size="10" text-anchor="middle">клеммы BAT</text>
+              <path class="wire" d="M100 48 H114"/>
+              <polygon class="term" points="122,48 111,43 111,53"/>
+              <path class="wire" d="M210 48 H224"/>
+              <polygon class="term" points="232,48 221,43 221,53"/>
+              <path class="wire" d="M340 48 H354"/>
+              <polygon class="term" points="362,48 351,43 351,53"/>
+              <path class="wire" d="M478 48 H492"/>
+              <polygon class="term" points="500,48 489,43 489,53"/>
+              <text x="10" y="100" font-size="11">Плюс батареи идёт напрямую к предохранителю — не через BMS!</text>
+            </svg>
+          </div>
+          <div class="grid-3 mt-24">
+            <div>
+              <b style="color:var(--accent)">BMS — только минус</b>
+              <p style="color:var(--muted);font-size:14px;margin-top:6px">В DIY-сборках (JK, Daly, Pace) BMS разрывает только минусовой провод. Плюс идёт напрямую к предохранителю. Пропустите плюс через BMS — повредите MOSFET.</p>
+            </div>
+            <div>
+              <b style="color:var(--accent)">Class T — ближе к клемме</b>
+              <p style="color:var(--muted);font-size:14px;margin-top:6px">Ставится как можно ближе к плюсовой клемме батареи (идеал — в пределах 18 см). Для инвертора 5 кВт (~125 А) номинал 150–200 А. Гасит дугу КЗ за миллисекунды — в отличие от ANL, который может гореть.</p>
+            </div>
+            <div>
+              <b style="color:var(--accent)">DC-автомат — отключение</b>
+              <p style="color:var(--muted);font-size:14px;margin-top:6px">Служит для ручного отключения батареи. Для 16S LiFePO4 (до ~58 В) — номинал 250 А и класс напряжения не ниже 60 В DC (на практике часто берут 500 В DC — это распространённый стандарт).</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-40">
+          <h3 class="reveal">Схема E · несколько батарей в параллель</h3>
+          <p class="lead reveal" style="font-size:15px">Когда одна сборка 16S не даёт нужной энергии (например, нужно 30 кВт·ч вместо 15).</p>
+        </div>
+        <div class="grid-2 mt-24">
+          <div class="card reveal">
+            <h3 style="font-size:18px">Способ 1 · метод Тихельмана</h3>
+            <p class="sub" style="margin-bottom:8px">Для 2–4 одинаковых батарей: уравнивает сопротивление путей и токи между батареями.</p>
+            <div class="cells-figure">
+              <svg class="cells-svg" viewBox="0 0 460 175" role="img" aria-label="Диагональное подключение двух батарей к шинам плюс и минус">
+                <rect class="cell" x="20" y="25" width="110" height="44" rx="10"/>
+                <text x="75" y="51" font-size="12" text-anchor="middle" class="acc">Батарея A</text>
+                <rect class="cell" x="20" y="110" width="110" height="44" rx="10"/>
+                <text x="75" y="136" font-size="12" text-anchor="middle" class="acc">Батарея B</text>
+                <rect class="cell hot" x="300" y="20" width="16" height="62" rx="5"/>
+                <rect class="cell cool" x="300" y="95" width="16" height="62" rx="5"/>
+                <text x="308" y="14" font-size="11" text-anchor="middle">Шина +</text>
+                <text x="308" y="172" font-size="11" text-anchor="middle">Шина −</text>
+                <path class="wire" d="M130 37 H300"/>
+                <path class="wire thin" d="M130 57 H230 V112 H300"/>
+                <path class="wire thin" d="M130 117 H250 V68 H300"/>
+                <path class="wire" d="M130 137 H300"/>
+                <text x="140" y="31" font-size="10">(+)</text>
+                <text x="140" y="70" font-size="10">(−)</text>
+                <text x="140" y="111" font-size="10">(+)</text>
+                <text x="140" y="150" font-size="10">(−)</text>
+              </svg>
+            </div>
+            <p><b>Правило:</b> плюс берётся с одной крайней батареи, минус — с другой. Кабели до шин — одинаковой длины и сечения.</p>
+          </div>
+          <div class="card reveal">
+            <h3 style="font-size:18px">Способ 2 · общие медные шины</h3>
+            <p class="sub" style="margin-bottom:8px">Для 4+ батарей или коммерческих систем.</p>
+            <div class="cells-figure">
+              <svg class="cells-svg" viewBox="0 0 460 190" role="img" aria-label="Три батареи подключаются к общей шине плюс сверху и шине минус снизу, далее через Class T и автомат к инвертору">
+                <rect class="cell hot" x="20" y="6" width="420" height="14" rx="6"/>
+                <text x="30" y="36" font-size="10">Шина +</text>
+                <rect class="cell cool" x="20" y="160" width="420" height="14" rx="6"/>
+                <text x="30" y="188" font-size="10">Шина −</text>
+                <rect class="cell" x="60" y="42" width="110" height="34" rx="8"/>
+                <rect class="cell" x="60" y="86" width="110" height="34" rx="8"/>
+                <rect class="cell" x="60" y="130" width="110" height="34" rx="8"/>
+                <text x="115" y="63" font-size="11" text-anchor="middle" class="acc">Батарея 1</text>
+                <text x="115" y="107" font-size="11" text-anchor="middle" class="acc">Батарея 2</text>
+                <text x="115" y="151" font-size="11" text-anchor="middle" class="acc">Батарея 3</text>
+                <path class="wire thin" d="M115 42 V20"/>
+                <path class="wire thin" d="M115 86 H180 V20"/>
+                <path class="wire thin" d="M115 130 H200 V20"/>
+                <path class="wire thin" d="M115 76 H200 V160"/>
+                <path class="wire thin" d="M115 120 H188 V160"/>
+                <path class="wire thin" d="M115 164 V160"/>
+                <rect class="cell hot" x="260" y="66" width="100" height="40" rx="8"/>
+                <text x="310" y="90" font-size="10.5" text-anchor="middle" class="acc">Class T + автомат</text>
+                <rect class="cell cool" x="380" y="66" width="76" height="40" rx="8"/>
+                <text x="418" y="90" font-size="10.5" text-anchor="middle" class="acc">Инвертор</text>
+                <path class="wire" d="M300 20 V66"/>
+                <path class="wire" d="M300 160 V106"/>
+                <path class="wire" d="M360 86 H380"/>
+              </svg>
+            </div>
+            <p>Каждая батарея подключается к общим шинам (+) и (−) <b>отдельными кабелями одинаковой длины</b>. На каждой батарее — свой BMS. Коммуникация между BMS — по шине CAN (Master/Slave) или через общий RS485.</p>
+          </div>
+        </div>
+
+        <div class="product mt-24 reveal">
+          <h3>Схема F · коммуникация BMS ↔ инвертор (Closed Loop)</h3>
+          <p class="sub">Чтобы инвертор «видел» состояние батареи (SOC, температуру, пределы тока) и корректно управлял зарядом, а не работал по фиксированным напряжениям (Open Loop).</p>
+          <div class="grid-2 mt-24">
+            <div>
+              <b style="color:var(--accent)">Физическое подключение</b>
+              <p style="color:var(--muted);font-size:14.5px;margin-top:6px">Кабель CAN (витая пара с терминаторами) или RS485 от порта BMS к порту инвертора — обычно обозначен как BMS/CAN.</p>
+            </div>
+            <div>
+              <b style="color:var(--accent)">Настройка</b>
+              <p style="color:var(--muted);font-size:14.5px;margin-top:6px">В BMS выбирается профиль протокола под инвертор (например, протокол Deye для JK BMS или Pace BMS). При параллельных батареях BMS настраиваются как Master (адрес 0000) и Slave (адреса 1000, 0100 и т.д.).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ac" style="background:var(--bg-soft)">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">AC · сеть и нагрузки</span>
+          <h2>Подключение инвертора к сети и нагрузкам</h2>
+        </div>
+        <div class="table-wrap reveal">
+          <table>
+            <thead><tr><th>Порт</th><th>Что подключается</th><th>Защита</th></tr></thead>
+            <tbody>
+              <tr><td><strong>GRID</strong></td><td>Ввод от сети / главного щита</td><td>Отдельный AC-автомат между инвертором и сетью (номинал: ток сети × 1,25)</td></tr>
+              <tr><td><strong>LOAD</strong> (EPS/Backup)</td><td>Щит резервных нагрузок</td><td>Отдельный AC-автомат между инвертором и резервным щитом</td></tr>
+              <tr><td><strong>GEN</strong></td><td>Генератор (опционально)</td><td>Согласно паспорту генератора. Порт многофункциональный, но одновременно работает только в одном режиме</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="product mt-24 reveal">
+          <h3>Схема G · распределение нагрузок между сетью и LOAD</h3>
+          <div class="cells-figure">
+            <svg class="cells-svg" viewBox="0 0 600 220" role="img" aria-label="Сеть через главный автомат разветвляется на GRID инвертора и прямой щит с мощными нагрузками, LOAD питает резервный щит">
+              <rect class="cell cool" x="10" y="20" width="76" height="44" rx="10"/>
+              <text x="48" y="46" font-size="12" text-anchor="middle" class="acc">Сеть</text>
+              <rect class="cell" x="106" y="20" width="104" height="44" rx="10"/>
+              <text x="158" y="46" font-size="11.5" text-anchor="middle" class="acc">Главный автомат</text>
+              <rect class="cell" x="236" y="20" width="100" height="44" rx="10"/>
+              <text x="286" y="46" font-size="11.5" text-anchor="middle" class="acc">AC-автомат</text>
+              <rect class="cell hot" x="356" y="20" width="70" height="44" rx="10"/>
+              <text x="391" y="46" font-size="12" text-anchor="middle" class="acc">GRID</text>
+              <rect class="cell" x="144" y="100" width="160" height="48" rx="10"/>
+              <text x="224" y="120" font-size="11.5" text-anchor="middle" class="acc">Прямой щит</text>
+              <text x="224" y="138" font-size="10" text-anchor="middle">духовка, бойлер, стиралка, плита</text>
+              <rect class="cell cool" x="10" y="160" width="76" height="44" rx="10"/>
+              <text x="48" y="186" font-size="12" text-anchor="middle" class="acc">LOAD</text>
+              <rect class="cell" x="106" y="160" width="100" height="44" rx="10"/>
+              <text x="156" y="186" font-size="11.5" text-anchor="middle" class="acc">AC-автомат</text>
+              <rect class="cell" x="226" y="160" width="180" height="48" rx="10"/>
+              <text x="316" y="180" font-size="11.5" text-anchor="middle" class="acc">Резервный щит</text>
+              <text x="316" y="198" font-size="10" text-anchor="middle">котёл, свет, холодильник, роутер</text>
+              <path class="wire" d="M86 42 H106"/>
+              <path class="wire" d="M210 42 H236"/>
+              <path class="wire" d="M336 42 H356"/>
+              <path class="wire thin" d="M224 42 V100"/>
+              <path class="wire" d="M86 182 H106"/>
+              <path class="wire" d="M206 182 H226"/>
+              <text x="10" y="14" font-size="10">от главного щита</text>
+            </svg>
+          </div>
+          <div class="grid-2 mt-24">
+            <div>
+              <b style="color:var(--green)">На LOAD (резерв)</b>
+              <p style="color:var(--muted);font-size:14.5px;margin-top:6px">Котёл, циркуляционные насосы, холодильник, освещение, роутер, сигнализация, зарядки телефонов. Это «фон», который должен работать всегда.</p>
+            </div>
+            <div>
+              <b style="color:var(--accent)">На прямой сети</b>
+              <p style="color:var(--muted);font-size:14.5px;margin-top:6px">Духовка, бойлер, стиральная машина с ТЭНом, чайник, индукционная плита. Слишком мощны: при переходе на батарею быстро её разрядят или выведут инвертор в перегрузку.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="extend">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Расширение</span>
+          <h2>Дополнительные схемы</h2>
+        </div>
+        <div class="grid-2">
+          <div class="card reveal">
+            <div class="icon">🔗</div>
+            <h3>Схема H · параллельная работа двух инверторов</h3>
+            <p>Если один инвертор не покрывает пиковую мощность дома (&gt; 5–8 кВт) — объединяются два одинаковых Deye в параллель (однофазная или трёхфазная система).</p>
+            <p class="mt-24"><b>Силовая часть:</b> выходы LOAD обоих инверторов — на общий резервный щит; входы GRID — на общий сетевой ввод.</p>
+            <p><b>Коммуникация:</b> патч-корд RJ-45 через порты Parallel Port. Один инвертор — Master, второй — Slave. DIP-переключатели на обоих — в положение OFF.</p>
+          </div>
+          <div class="card reveal">
+            <div class="icon blue">⛽</div>
+            <h3>Схема I · генератор через порт GEN</h3>
+            <p>Порт GEN позволяет заряжать батарею от генератора в долгие пасмурные периоды — инвертор в этом режиме работает как зарядное устройство.</p>
+            <p class="mt-24"><b>Порт программируется:</b> вход генератора, «умная нагрузка» (например, нагрев воды излишками солнца) или вход микроинверторов (AC coupling). Одновременно активен только один режим.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="summary" style="background:var(--bg-soft)">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Шпаргалка</span>
+          <h2>Сводка по схемам для разных сценариев</h2>
+        </div>
+        <div class="table-wrap reveal">
+          <table>
+            <thead><tr><th>Сценарий</th><th>Схема панелей</th><th>Схема батареи</th><th>Схема нагрузок</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Квартира / малый резерв</strong></td>
+                <td>1 стринг → PV1</td>
+                <td>Одиночная 16S (схема D)</td>
+                <td>Минимум групп на LOAD: котёл, свет, роутер</td>
+              </tr>
+              <tr>
+                <td><strong>Дом с солнцем</strong></td>
+                <td>2 стринга на PV1 + PV2 (схема C)</td>
+                <td>Одиночная 16S или 2 параллельно (схема E)</td>
+                <td>LOAD — «фон» и критические группы; мощное — на сети</td>
+              </tr>
+              <tr>
+                <td><strong>Коммерция / большая ёмкость</strong></td>
+                <td>Несколько стрингов на каждый MPPT (схема B)</td>
+                <td>4+ батареи на общих шинах с CAN-коммуникацией (схема E, способ 2)</td>
+                <td>Параллельная работа инверторов (схема H) для покрытия пиков</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight">
+      <div class="container">
+        <div class="cta-band reveal">
+          <div>
+            <h2>Смонтируем систему по всем правилам</h2>
+            <p>Соберём схему под ваш сценарий: от стрингов панелей до распределения нагрузок и коммуникации BMS.</p>
+          </div>
+          <a href="contacts.html" class="btn btn-primary">Обсудить проект</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="logo" style="margin-bottom:16px">
+            <span class="logo-icon">⚡</span>
+            <span>ЧИК ЭНЕРГИЯ<small>Челябинская инженерная компания</small></span>
+          </a>
+          <p>Продажа и установка систем резервного питания, аккумуляторов LiFePO4 и ESS-систем в Челябинске и Челябинской области.</p>
+        </div>
+        <div>
+          <h4>Разделы</h4>
+          <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="services.html">Монтаж и услуги</a></li>
+            <li><a href="calculator.html">Калькулятор автономии</a></li>
+            <li><a href="useful.html">Полезное</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Оборудование</h4>
+          <ul>
+            <li><a href="catalog.html#standart">ИБП-комплекты «Стандарт»</a></li>
+            <li><a href="catalog.html#premium">ESS «Премиум»</a></li>
+            <li><a href="catalog.html#accu">Аккумуляторы LiFePO4</a></li>
+            <li><a href="cells.html">Ячейки EVE и сборки батарей</a></li>
+            <li><a href="cell-selection.html">Выбор ячеек под инвертор</a></li>
+            <li><a href="solar-panels.html">Солнечные панели Tier-1</a></li>
+            <li><a href="cables-safety.html">Кабели, автоматы и защита</a></li>
+            <li><a href="wiring.html">Схемы подключения узлов</a></li>
+            <li><a href="catalog.html#inverters">Инверторы и гибриды</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Контакты</h4>
+          <ul>
+            <li><a href="tel:+73512309996"><b>+7 351 230-99-96</b></a></li>
+            <li>г. Челябинск, Челябинская область</li>
+            <li>Монтаж по всему Южному Уралу</li>
+          </ul>
+          <a href="tel:+73512309996" class="btn btn-primary btn-sm" style="margin-top:10px">Позвонить</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 ЧИК ЭНЕРГИЯ — Челябинская инженерная компания. Все права защищены. <a href="policy.html">Политика обработки ПДн</a></span>
+        <span>Цены на сайте ориентировочные и уточняются расчётом по объекту.</span>
+      </div>
+    </div>
+  </footer>
+
+  <a href="tel:+73512309996" class="float-call">📞 Позвонить</a>
+
+  <script src="js/main.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Схемы подключения гибридной системы 48 В: панели, батарея, инвертор, нагрузки",
+    "description": "Схемы PV-стрингов A/B/C, подключения батареи 16S через BMS и Class T, метод Тихельмана, шины, распределение GRID/LOAD, параллельные инверторы и генератор.",
+    "url": "https://morozzz174.github.io/chik-energy/wiring.html",
+    "author": { "@type": "Organization", "name": "ЧИК ЭНЕРГИЯ — Челябинская инженерная компания" },
+    "publisher": { "@type": "Organization", "name": "ЧИК ЭНЕРГИЯ" }
+  }
+  </script>
+</body>
+</html>

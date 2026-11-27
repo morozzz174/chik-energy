@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ячейки EVE LiFePO4 4-го поколения — схемы сборки батарей 12,8 / 25,6 / 51,2 В | ЧИК ЭНЕРГИЯ</title>
+  <meta name="description" content="Как собрать батарею из ячеек EVE LiFePO4 4-го поколения: MB31 314 А·ч, LF304 304 А·ч, LF280K 280 А·ч и LF105 105 А·ч. Схемы 4S, 8S, 16S и 2P, правила BMS, балансировки и монтажа — наглядно и просто.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta property="og:title" content="Ячейки EVE LiFePO4 4-го поколения — схемы сборки батарей">
+  <meta property="og:description" content="MB31, LF304, LF280K и LF105: сборки 4S / 8S / 16S / 2P, таблицы ёмкости и энергии, правила BMS и балансировки.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://morozzz174.github.io/chik-energy/cells.html">
+  <meta property="og:locale" content="ru_RU">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Переиспользуемые графические элементы схем -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <g id="cell-unit">
+        <rect class="cell" x="-13" y="-28" width="26" height="56" rx="6"/>
+        <rect class="term" x="-4" y="-33" width="8" height="4.5" rx="1.5"/>
+        <rect class="term" x="-4" y="28.5" width="8" height="4.5" rx="1.5"/>
+        <text x="0" y="-8" text-anchor="middle" font-size="12" class="acc">+</text>
+        <text x="0" y="20" text-anchor="middle" font-size="13" class="acc">−</text>
+      </g>
+      <g id="cell-plain">
+        <rect class="cell" x="-13" y="-28" width="26" height="56" rx="6"/>
+        <rect class="term" x="-4" y="-33" width="8" height="4.5" rx="1.5"/>
+        <rect class="term" x="-4" y="28.5" width="8" height="4.5" rx="1.5"/>
+      </g>
+      <g id="cell-sm">
+        <rect class="cell" x="-6.5" y="-20" width="13" height="40" rx="3.5"/>
+        <rect class="term" x="-2.5" y="-24" width="5" height="3.5" rx="1"/>
+        <rect class="term" x="-2.5" y="20.5" width="5" height="3.5" rx="1"/>
+      </g>
+    </defs>
+  </svg>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">⚡</span>
+        <span>ЧИК ЭНЕРГИЯ<small>Челябинская инженерная компания</small></span>
+      </a>
+      <nav class="nav">
+        <a href="index.html">Главная</a>
+        <a href="catalog.html">Каталог</a>
+        <div class="has-sub">
+          <a href="#" class="active">База знаний <span class="caret">▾</span></a>
+          <div class="sub">
+            <a href="cells.html" class="active">Ячейки LiFePO4</a>
+            <a href="cell-selection.html">Выбор ячеек</a>
+            <a href="solar-panels.html">Солнечные панели</a>
+            <a href="cables-safety.html">Кабели и защита</a>
+            <a href="wiring.html">Схемы подключения</a>
+          </div>
+        </div>
+        <a href="services.html">Монтаж</a>
+        <a href="calculator.html">Калькулятор</a>
+        <a href="contacts.html">Контакты</a>
+      </nav>
+      <a class="header-phone" href="tel:+73512309996">
+        <strong>+7 351 230-99-96</strong>
+        <span>Челябинск, звонок по области</span>
+      </a>
+      <a href="tel:+73512309996" class="btn btn-primary btn-sm">Позвонить</a>
+      <button class="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow">Батареи и сборки</span>
+        <h1>Ячейки EVE LiFePO4 <span class="text-grad">4-го поколения</span></h1>
+        <p class="lead">Призматические элементы MB-серии и V4 — стандарт для сборки аккумуляторов: до 8 000–10 000 циклов и высокая плотность энергии. Разбираем, как из ячеек 3,2 В собираются батареи 12,8, 25,6 и 51,2 В — со схемами и таблицами.</p>
+        <div class="partners mt-24" style="justify-content:flex-start">
+          <span class="badge-line">EVE MB31 · 314 А·ч</span>
+          <span class="badge-line">EVE LF304 · 304 А·ч</span>
+          <span class="badge-line">EVE LF280K V4 · 280 А·ч</span>
+          <span class="badge-line">EVE LF105 · 105 А·ч</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="rules">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Азбука сборки</span>
+          <h2>Два правила, из которых собирается любая батарея</h2>
+          <p class="lead">Номинал одной ячейки LiFePO4 — 3,2 В. Последовательное соединение (S) складывает напряжение, параллельное (P) — ёмкость.</p>
+        </div>
+        <div class="sp-panels">
+          <div class="sp-panel reveal">
+            <h3>Последовательно — S</h3>
+            <span class="sp-formula">3,2 В × 4 = 12,8 В</span>
+            <span class="sp-formula">3,2 В × 16 = 51,2 В</span>
+            <div class="cells-figure">
+              <svg class="cells-svg" viewBox="0 0 520 155" role="img" aria-label="Схема последовательного соединения четырёх ячеек">
+                <path class="wire thin" d="M60 97 V122 H175 V33"/>
+                <path class="wire thin" d="M175 97 V122 H290 V33"/>
+                <path class="wire thin" d="M290 97 V122 H405 V33"/>
+                <path class="wire" d="M60 29 V10 H30"/>
+                <path class="wire" d="M405 97 V143 H490"/>
+                <use href="#cell-unit" x="60" y="62"/>
+                <use href="#cell-unit" x="175" y="62"/>
+                <use href="#cell-unit" x="290" y="62"/>
+                <use href="#cell-unit" x="405" y="62"/>
+                <text x="60" y="18" text-anchor="middle" class="acc" font-size="13">3,2 В</text>
+                <text x="175" y="18" text-anchor="middle" font-size="12">3,2 В</text>
+                <text x="290" y="18" text-anchor="middle" font-size="12">3,2 В</text>
+                <text x="405" y="18" text-anchor="middle" font-size="12">3,2 В</text>
+                <text x="30" y="10" dx="-6" dy="-8" class="acc" font-size="13">+</text>
+                <text x="490" y="143" dx="8" dy="4" class="acc" font-size="13">−</text>
+                <text x="260" y="128" text-anchor="middle" class="big">итого 12,8 В, ёмкость — как у одной ячейки</text>
+              </svg>
+            </div>
+            <p>Ячейки соединяются в цепочку: «минус» одной к «плюсу» следующей. Напряжения складываются, ёмкость остаётся ёмкостью одной ячейки.</p>
+          </div>
+          <div class="sp-panel reveal">
+            <h3>Параллельно — P</h3>
+            <span class="sp-formula blue">105 А·ч × 4 = 420 А·ч</span>
+            <span class="sp-formula blue">напряжение не меняется</span>
+            <div class="cells-figure">
+              <svg class="cells-svg" viewBox="0 0 520 155" role="img" aria-label="Схема параллельного соединения четырёх ячеек">
+                <path class="wire" d="M30 10 H425"/>
+                <path class="wire thin" d="M60 29 V10"/>
+                <path class="wire thin" d="M175 29 V10"/>
+                <path class="wire thin" d="M290 29 V10"/>
+                <path class="wire thin" d="M405 29 V10"/>
+                <path class="wire" d="M30 140 H490"/>
+                <path class="wire thin" d="M60 95 V140"/>
+                <path class="wire thin" d="M175 95 V140"/>
+                <path class="wire thin" d="M290 95 V140"/>
+                <path class="wire thin" d="M405 95 V140"/>
+                <use href="#cell-unit" x="60" y="62"/>
+                <use href="#cell-unit" x="175" y="62"/>
+                <use href="#cell-unit" x="290" y="62"/>
+                <use href="#cell-unit" x="405" y="62"/>
+                <text x="52" y="10" dx="-8" dy="-8" class="acc" font-size="13">+</text>
+                <text x="490" y="140" dx="8" dy="5" class="acc" font-size="13">−</text>
+                <text x="260" y="128" text-anchor="middle" class="big">все «плюсы» вместе, все «минусы» вместе</text>
+              </svg>
+            </div>
+            <p>Ячейки соединяются «плюс к плюсу», «минус к минусу»: напряжение остаётся номиналом одной ячейки, а ёмкости складываются.</p>
+          </div>
+        </div>
+        <div class="note-box mt-24 reveal">
+          <b>Обозначение сборки: S × P.</b> Запись 16S1P читается так: 16 ячеек последовательно в одной цепочке — 51,2 В; 16S2P — две такие цепочки параллельно — 51,2 В и двойная ёмкость.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="voltage" style="background:var(--bg-soft)">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Стандарты напряжения</span>
+          <h2>Три типовых напряжения системы</h2>
+          <p class="lead">Из ячеек 3,2 В собирают три классических семейства батарей — под автодом, технику и домашний накопитель.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card volt-card reveal">
+            <svg class="cells-svg" viewBox="0 0 320 92" role="img" aria-label="Цепочка из 4 ячеек — 12,8 вольта">
+              <path class="wire" d="M20 66 H300"/>
+              <use href="#cell-sm" x="40" y="38"/>
+              <use href="#cell-sm" x="105" y="38"/>
+              <use href="#cell-sm" x="170" y="38"/>
+              <use href="#cell-sm" x="235" y="38"/>
+              <text x="160" y="22" text-anchor="middle" class="big">12,8 В</text>
+              <text x="160" y="86" text-anchor="middle" class="acc" font-size="12">4S · 4 ячейки</text>
+            </svg>
+            <h3 class="mt-24">12,8 В — «мобильный»</h3>
+            <p>Автодома и кемперы, лодки и троллинговые моторы, небольшие солнечные системы.</p>
+          </div>
+          <div class="card volt-card reveal">
+            <svg class="cells-svg" viewBox="0 0 320 92" role="img" aria-label="Цепочка из 8 ячеек — 25,6 вольта">
+              <path class="wire" d="M20 66 H300"/>
+              <use href="#cell-sm" x="40" y="38"/><use href="#cell-sm" x="80" y="38"/>
+              <use href="#cell-sm" x="120" y="38"/><use href="#cell-sm" x="160" y="38"/>
+              <use href="#cell-sm" x="200" y="38"/><use href="#cell-sm" x="240" y="38"/>
+              <use href="#cell-sm" x="280" y="38"/>
+              <text x="160" y="22" text-anchor="middle" class="big">25,6 В</text>
+              <text x="160" y="86" text-anchor="middle" class="acc" font-size="12">8S · 8 ячеек</text>
+            </svg>
+            <h3 class="mt-24">25,6 В — «техника»</h3>
+            <p>Электроскутеры и катера, промышленные тележки и оборудование на 24 В.</p>
+          </div>
+          <div class="card volt-card reveal">
+            <svg class="cells-svg" viewBox="0 0 320 92" role="img" aria-label="Цепочка из 16 ячеек — 51,2 вольта">
+              <path class="wire" d="M12 66 H308"/>
+              <use href="#cell-sm" x="20" y="38"/><use href="#cell-sm" x="40" y="38"/>
+              <use href="#cell-sm" x="60" y="38"/><use href="#cell-sm" x="80" y="38"/>
+              <use href="#cell-sm" x="100" y="38"/><use href="#cell-sm" x="120" y="38"/>
+              <use href="#cell-sm" x="140" y="38"/><use href="#cell-sm" x="160" y="38"/>
+              <use href="#cell-sm" x="180" y="38"/><use href="#cell-sm" x="200" y="38"/>
+              <use href="#cell-sm" x="220" y="38"/><use href="#cell-sm" x="240" y="38"/>
+              <use href="#cell-sm" x="260" y="38"/><use href="#cell-sm" x="280" y="38"/>
+              <use href="#cell-sm" x="300" y="38"/>
+              <text x="160" y="22" text-anchor="middle" class="big">51,2 В</text>
+              <text x="160" y="86" text-anchor="middle" class="acc" font-size="12">16S · 16 ячеек</text>
+            </svg>
+            <h3 class="mt-24">51,2 В — «домашний»</h3>
+            <p>Стандарт домашних накопителей и мощных инверторов: серверный шкаф 19" и ESS-системы.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="configs">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Выбираем ячейку</span>
+          <h2>Ячейки V4 и что из них собирается</h2>
+          <p class="lead">Три самых ходовых элемента 4-го поколения. Всё остальное в таблице — лишь вопрос количества ячеек.</p>
+        </div>
+        <div class="grid-4 mb-0">
+          <div class="cell-mini reveal">
+            <b>EVE MB31</b> · 314 А·ч
+            <p>Флагман линейки: около 1,0 кВт·ч энергии на один элемент. Максимальная ёмкость в V4.</p>
+          </div>
+          <div class="cell-mini reveal">
+            <b>EVE LF304</b> · 304 А·ч
+            <p>«Рабочая лошадка» с ресурсом около 4 000 циклов — когда максимальная ёмкость не нужна, а надёжность важна.</p>
+          </div>
+          <div class="cell-mini reveal">
+            <b>EVE LF280K</b> · 280 А·ч
+            <p>Легендарная модель, обновлённая до спецификаций V4. Самый доступный вариант — фаворит DIY-проектов.</p>
+          </div>
+          <div class="cell-mini reveal">
+            <b>EVE LF105</b> · 105 А·ч
+            <p>Компактный элемент среднего размера: гибкая компоновка и умеренный вес. Полный разбор — ниже.</p>
+          </div>
+        </div>
+        <div class="table-wrap mt-40 reveal">
+          <table>
+            <thead>
+              <tr>
+                <th>Схема</th>
+                <th>Напряжение</th>
+                <th>MB31 · 314 А·ч</th>
+                <th>LF304 · 304 А·ч</th>
+                <th>LF280K · 280 А·ч</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>4S1P</strong></td><td>12,8 В</td>
+                <td>314 А·ч · ~4,0 кВт·ч · 4 шт.</td>
+                <td>304 А·ч · ~3,9 кВт·ч · 4 шт.</td>
+                <td>280 А·ч · ~3,6 кВт·ч · 4 шт.</td>
+              </tr>
+              <tr>
+                <td><strong>8S1P</strong></td><td>25,6 В</td>
+                <td>314 А·ч · ~8,0 кВт·ч · 8 шт.</td>
+                <td>304 А·ч · ~7,8 кВт·ч · 8 шт.</td>
+                <td>280 А·ч · ~7,2 кВт·ч · 8 шт.</td>
+              </tr>
+              <tr>
+                <td><strong>16S1P</strong></td><td>51,2 В</td>
+                <td>314 А·ч · ~16,0 кВт·ч · 16 шт.</td>
+                <td>304 А·ч · ~15,6 кВт·ч · 16 шт.</td>
+                <td>280 А·ч · ~14,3 кВт·ч · 16 шт.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="lead mt-24 reveal" style="font-size:14px">Типовые применения: 4S — мощный дом на колёсах, крупный троллинговый мотор; 8S — катера и небольшие промышленные тележки; 16S — домашняя солнечная станция (стандартный серверный шкаф).</p>
+        <div class="note-box mt-24 reveal">
+          <b>Как выбрать под свой инвертор и сценарий?</b> Готовые схемы для квартиры, дома с солнцем и коммерческих объектов — на странице <a href="cell-selection.html">«Выбор ячеек»</a>.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="lf105" style="background:var(--bg-soft)">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Отдельный разбор</span>
+          <h2>EVE LF105 — ячейка на 105 А·ч</h2>
+          <p class="lead">Занимает промежуточное положение между маломощными элементами и гигантами вроде MB31: баланс компактности, веса и ёмкости.</p>
+        </div>
+        <div class="grid-2">
+          <div class="table-wrap reveal">
+            <table style="min-width:0">
+              <thead><tr><th>Параметр</th><th>Значение</th></tr></thead>
+              <tbody>
+                <tr><td>Номинальное напряжение</td><td><strong>3,2 В</strong></td></tr>
+                <tr><td>Номинальная ёмкость</td><td><strong>105 А·ч</strong></td></tr>
+                <tr><td>Номинальная энергия</td><td>~336 Вт·ч</td></tr>
+                <tr><td>Ресурс циклов</td><td>до 5 000 (0,5C, до 80%); в ряде источников 3 500–4 000</td></tr>
+                <tr><td>Вес</td><td>~1,98 кг</td></tr>
+                <tr><td>Размеры (В × Ш × Т)</td><td>200,5 × 130,3 × 36,35 мм</td></tr>
+                <tr><td>Стандартный ток заряда/разряда</td><td>0,5C (52,5 А)</td></tr>
+                <tr><td>Максимальный ток разряда</td><td>до 3C (315 А) в пике</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="sp-panel reveal">
+            <h3>Габариты элемента</h3>
+            <div class="cells-figure">
+              <svg class="cells-svg" viewBox="0 0 320 190" role="img" aria-label="Габариты ячейки LF105: 200,5 на 130,3 на 36,35 миллиметров, около 1,98 кг">
+                <rect class="cell" x="90" y="30" width="150" height="105" rx="8" style="fill:rgba(255,176,32,0.14);stroke:rgba(255,176,32,0.6)"/>
+                <rect class="cell" x="96" y="22" width="150" height="105" rx="8" style="opacity:0.35"/>
+                <text x="165" y="88" text-anchor="middle" class="big">LF105</text>
+                <path class="wire thin" d="M90 150 H240 M90 146 V154 M240 146 V154"/>
+                <text x="165" y="168" text-anchor="middle" font-size="12">200,5 мм</text>
+                <path class="wire thin" d="M248 30 V135 M244 30 H252 M244 135 H252"/>
+                <text x="258" y="86" font-size="12">130,3 мм</text>
+                <text x="84" y="18" text-anchor="end" font-size="12">36,35 мм — толщина</text>
+                <text x="165" y="186" text-anchor="middle" class="acc" font-size="12">~1,98 кг</text>
+              </svg>
+            </div>
+            <p>Узкий и лёгкий призматический элемент в алюминиевом корпусе: шесть штук по ширине — и уже готова 12-вольтовая батарея.</p>
+          </div>
+        </div>
+
+        <h3 class="mt-40 reveal center">Сборки из одной цепочки (1P)</h3>
+        <div class="table-wrap mt-24 reveal">
+          <table>
+            <thead>
+              <tr><th>Схема</th><th>Напряжение</th><th>Ёмкость</th><th>Энергия</th><th>Ячеек</th><th>Вес ячеек</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>4S1P</strong></td><td>12,8 В</td><td>105 А·ч</td><td>~1,34 кВт·ч</td><td>4 шт.</td><td>~7,9 кг</td></tr>
+              <tr><td><strong>8S1P</strong></td><td>25,6 В</td><td>105 А·ч</td><td>~2,69 кВт·ч</td><td>8 шт.</td><td>~15,8 кг</td></tr>
+              <tr><td><strong>16S1P</strong></td><td>51,2 В</td><td>105 А·ч</td><td>~5,38 кВт·ч</td><td>16 шт.</td><td>~31,7 кг</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="mt-40 reveal center">Сборки с удвоением ёмкости (2P)</h3>
+        <div class="table-wrap mt-24 reveal">
+          <table>
+            <thead>
+              <tr><th>Схема</th><th>Напряжение</th><th>Ёмкость</th><th>Энергия</th><th>Ячеек</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>4S2P</strong></td><td>12,8 В</td><td>210 А·ч</td><td>~2,69 кВт·ч</td><td>8 шт.</td></tr>
+              <tr><td><strong>8S2P</strong></td><td>25,6 В</td><td>210 А·ч</td><td>~5,38 кВт·ч</td><td>16 шт.</td></tr>
+              <tr><td><strong>16S2P</strong></td><td>51,2 В</td><td>210 А·ч</td><td>~10,75 кВт·ч</td><td>32 шт.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="note-box mt-24 reveal">
+          <b>Напряжение системы — главный выбор на 105 А·ч.</b> Из-за меньшей ёмкости ток нагрузки растёт вдвое-втрое по сравнению с 280–314 А·ч: инвертор 2 000 Вт на сборке 4S (12,8 В) потребляет ~156 А — на пределе стандартного BMS и с толстыми проводами. 8S (25,6 В) снижает ток до ~78 А, а 16S (51,2 В) — до ~39 А: безопаснее и эффективнее. Для мощных 12-вольтовых сборок нужен BMS на 150–200 А.
+        </div>
+        <p class="lead mt-24 reveal" style="font-size:14px">Применение: гольф-кары, скутеры, небольшие лодки, кемперы со средней нагрузкой, компактные домашние и резервные системы питания.</p>
+      </div>
+    </section>
+
+    <section class="section" id="parallel">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Больше ёмкости</span>
+          <h2>Параллельные сборки: 2P и дальше</h2>
+          <p class="lead">Когда одной цепочки мало, собирают несколько одинаковых цепочек и соединяют их параллельно — ёмкость и энергия удваиваются, напряжение сохраняется.</p>
+        </div>
+        <div class="sp-panel reveal" style="max-width:820px;margin:0 auto">
+          <div class="cells-figure">
+            <svg class="cells-svg" viewBox="0 0 560 205" role="img" aria-label="Схема 16S2P: две последовательные цепочки по 16 ячеек соединены параллельно">
+              <path class="wire" d="M38 22 V185"/>
+              <path class="wire" d="M522 60 V160"/>
+              <path class="wire thin" d="M70 37 V22"/>
+              <path class="wire thin" d="M70 152 V185"/>
+              <path class="wire thin" d="M130 97 V122 H190 V37"/>
+              <path class="wire thin" d="M190 97 V122 H250 V37"/>
+              <path class="wire thin" d="M250 97 V122 H310 V37"/>
+              <path class="wire thin" d="M130 182 V162"/>
+              <path class="wire thin" d="M190 182 V162 H250 V107"/>
+              <path class="wire thin" d="M250 182 V162 H310 V107"/>
+              <path class="wire thin" d="M310 182 V162"/>
+              <use href="#cell-plain" x="70" y="67"/>
+              <use href="#cell-plain" x="130" y="67"/>
+              <use href="#cell-plain" x="190" y="67"/>
+              <use href="#cell-plain" x="250" y="67"/>
+              <use href="#cell-plain" x="70" y="132"/>
+              <use href="#cell-plain" x="130" y="132"/>
+              <use href="#cell-plain" x="190" y="132"/>
+              <use href="#cell-plain" x="250" y="132"/>
+              <text x="38" y="22" dx="-10" dy="-6" class="acc" font-size="14">+</text>
+              <text x="522" y="160" dx="10" dy="5" class="acc" font-size="14">−</text>
+              <text x="390" y="60" text-anchor="middle" class="big">цепочка 1</text>
+              <text x="390" y="140" text-anchor="middle" font-size="13">цепочка 2</text>
+              <text x="280" y="200" text-anchor="middle" class="acc" font-size="13">обе цепочки на общие шины + и − : ёмкость ×2</text>
+            </svg>
+          </div>
+        </div>
+        <div class="table-wrap mt-24 reveal">
+          <table>
+            <thead>
+              <tr><th>Сборка на базе 51,2 В</th><th>Ячеек</th><th>Итог</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>16S2P на LF280K</strong></td><td>32 шт.</td><td>51,2 В / 560 А·ч (~28,6 кВт·ч)</td></tr>
+              <tr><td><strong>16S2P на MB31</strong></td><td>32 шт.</td><td>51,2 В / 628 А·ч (~32,0 кВт·ч)</td></tr>
+              <tr><td><strong>4S2P на LF280K</strong></td><td>8 шт.</td><td>12,8 В / 560 А·ч (~7,2 кВт·ч)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="safety" style="background:var(--bg-soft)">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Важно перед сборкой</span>
+          <h2>Правила, которые нельзя нарушать</h2>
+        </div>
+        <div class="grid-4">
+          <div class="card reveal">
+            <div class="icon">🛡️</div>
+            <h3>BMS под свою схему</h3>
+            <p>Плата защиты рассчитывается строго под 4S, 8S или 16S. Li-ion BMS не подходит для LiFePO4 — пороги напряжения другие. Ток BMS берут на 20% выше максимального тока нагрузки.</p>
+          </div>
+          <div class="card reveal">
+            <div class="icon blue">⚖️</div>
+            <h3>Верхняя балансировка</h3>
+            <p>Перед сборкой все ячейки соединяют параллельно и заряжают до 3,65 В — так выравнивается их состояние. Пропуск шага = разбаланс с первого цикла.</p>
+          </div>
+          <div class="card reveal">
+            <div class="icon green">🗜️</div>
+            <h3>Механическое сжатие</h3>
+            <p>Призматические ячейки ставят в жёсткий каркас с изолирующими прокладками. «Свободно стоящие» работают хуже и со временем деформируются.</p>
+          </div>
+          <div class="card reveal">
+            <div class="icon">🔩</div>
+            <h3>Шины и момент затяжки</h3>
+            <p>Соединения — медные или алюминиевые шины (busbars) достаточного сечения, клеммы затянуты с рекомендованным моментом. Пайка и сварка без спецоборудования не рекомендуются.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight">
+      <div class="container">
+        <div class="cta-band reveal">
+          <div>
+            <h2>Соберём и установим батарею под Ваш инвертор</h2>
+            <p>Подберём ячейки и BMS, выполним балансировку и монтаж по правилам производителя. Работаем в Челябинске и по области.</p>
+          </div>
+          <a href="contacts.html" class="btn btn-primary">Обсудить сборку</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="logo" style="margin-bottom:16px">
+            <span class="logo-icon">⚡</span>
+            <span>ЧИК ЭНЕРГИЯ<small>Челябинская инженерная компания</small></span>
+          </a>
+          <p>Продажа и установка систем резервного питания, аккумуляторов LiFePO4 и ESS-систем в Челябинске и Челябинской области.</p>
+        </div>
+        <div>
+          <h4>Разделы</h4>
+          <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="services.html">Монтаж и услуги</a></li>
+            <li><a href="calculator.html">Калькулятор автономии</a></li>
+            <li><a href="useful.html">Полезное</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Оборудование</h4>
+          <ul>
+            <li><a href="catalog.html#standart">ИБП-комплекты «Стандарт»</a></li>
+            <li><a href="catalog.html#premium">ESS «Премиум»</a></li>
+            <li><a href="catalog.html#accu">Аккумуляторы LiFePO4</a></li>
+            <li><a href="cells.html">Ячейки EVE и сборки батарей</a></li>
+            <li><a href="cell-selection.html">Выбор ячеек под инвертор</a></li>
+            <li><a href="solar-panels.html">Солнечные панели Tier-1</a></li>
+            <li><a href="cables-safety.html">Кабели, автоматы и защита</a></li>
+            <li><a href="wiring.html">Схемы подключения узлов</a></li>
+            <li><a href="catalog.html#inverters">Инверторы и гибриды</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Контакты</h4>
+          <ul>
+            <li><a href="tel:+73512309996"><b>+7 351 230-99-96</b></a></li>
+            <li>г. Челябинск, Челябинская область</li>
+            <li>Монтаж по всему Южному Уралу</li>
+          </ul>
+          <a href="tel:+73512309996" class="btn btn-primary btn-sm" style="margin-top:10px">Позвонить</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 ЧИК ЭНЕРГИЯ — Челябинская инженерная компания. Все права защищены. <a href="policy.html">Политика обработки ПДн</a></span>
+        <span>Цены на сайте ориентировочные и уточняются расчётом по объекту.</span>
+      </div>
+    </div>
+  </footer>
+
+  <a href="tel:+73512309996" class="float-call">📞 Позвонить</a>
+
+  <script src="js/main.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Ячейки EVE LiFePO4 4-го поколения: схемы сборки батарей 12,8 / 25,6 / 51,2 В",
+    "description": "MB31 314 А·ч, LF304 304 А·ч, LF280K 280 А·ч и LF105 105 А·ч: сборки 4S, 8S, 16S и 2P, правила BMS, балансировки и монтажа.",
+    "url": "https://morozzz174.github.io/chik-energy/cells.html",
+    "author": { "@type": "Organization", "name": "ЧИК ЭНЕРГИЯ — Челябинская инженерная компания" },
+    "publisher": { "@type": "Organization", "name": "ЧИК ЭНЕРГИЯ" }
+  }
+  </script>
+</body>
+</html>

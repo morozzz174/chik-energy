@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Кабели, автоматы и защита: обвязка системы 48 В | ЧИК ЭНЕРГИЯ</title>
+  <meta name="description" content="Как защитить систему на 48 В: сечения кабелей (PV 4–6 мм², батарея 25–35 мм², AC 6–10 мм²), DC- и AC-автоматы, предохранители Class T, УЗО типа A/B, УЗИП, заземление и монтажные боксы Seplos, Deligreen.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta property="og:title" content="Кабели, автоматы и защита для системы 48 В">
+  <meta property="og:description" content="Сечения кабелей, DC/AC-защита, Class T, УЗО типа A/B, УЗИП, заземление и сводные чек-листы обвязки.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://morozzz174.github.io/chik-energy/cables-safety.html">
+  <meta property="og:locale" content="ru_RU">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">⚡</span>
+        <span>ЧИК ЭНЕРГИЯ<small>Челябинская инженерная компания</small></span>
+      </a>
+      <nav class="nav">
+        <a href="index.html">Главная</a>
+        <a href="catalog.html">Каталог</a>
+        <div class="has-sub">
+          <a href="#" class="active">База знаний <span class="caret">▾</span></a>
+          <div class="sub">
+            <a href="cells.html">Ячейки LiFePO4</a>
+            <a href="cell-selection.html">Выбор ячеек</a>
+            <a href="solar-panels.html">Солнечные панели</a>
+            <a href="cables-safety.html" class="active">Кабели и защита</a>
+          </div>
+        </div>
+        <a href="services.html">Монтаж</a>
+        <a href="calculator.html">Калькулятор</a>
+        <a href="contacts.html">Контакты</a>
+      </nav>
+      <a class="header-phone" href="tel:+73512309996">
+        <strong>+7 351 230-99-96</strong>
+        <span>Челябинск, звонок по области</span>
+      </a>
+      <a href="tel:+73512309996" class="btn btn-primary btn-sm">Позвонить</a>
+      <button class="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow">Техническая обвязка</span>
+        <h1>Кабели, автоматы <span class="text-grad">и безопасность</span></h1>
+        <p class="lead">Обвязка — момент, когда система перестаёт быть набором компонентов и становится единым безопасным электротехническим комплексом. Ключевой принцип: каждый участок цепи защищён устройством, рассчитанным на конкретный ток и тип напряжения (DC или AC).</p>
+      </div>
+    </section>
+
+    <section class="section" id="cables">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Провод</span>
+          <h2>Кабели и сечения: где какой нужен</h2>
+          <p class="lead">Сечение определяется не только током, но и допустимым падением напряжения. В 48-вольтовых системах ток при той же мощности в 4 раза выше, чем в сети 220 В — экономить на меди нельзя.</p>
+        </div>
+        <div class="grid-2 mt-24">
+          <div class="card volt-card reveal">
+            <div class="stat"><b>× 4</b><span>ток 48 В против 220 В</span></div>
+            <p>При одинаковой мощности по кабелю 48-вольтовой линии идёт вчетверо больший ток — именно поэтому сечения тут «взрослые».</p>
+          </div>
+          <div class="card volt-card reveal">
+            <div class="stat"><b>≤ 3%</b><span>падение для DC, это 1,44 В при 48 В</span></div>
+            <p>Ориентир для проектирования трасс: считайте длину и сечение так, чтобы на проводах не оставалось больше 1,44 вольта.</p>
+          </div>
+        </div>
+        <div class="table-wrap mt-24 reveal">
+          <table>
+            <thead>
+              <tr><th>Участок цепи</th><th>Тип кабеля</th><th>Сечение (медь)</th><th>Логика выбора</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Панели → инвертор</strong> (DC, PV)</td>
+                <td>Солнечный кабель: UV-стойкий, двойная изоляция</td><td>4–6 мм²</td>
+                <td>Струна обычно тянет 15–20 А: 4 мм² хватает большинству домашних массивов, 6 мм² — запас на длинные трассы и объединение струн.</td>
+              </tr>
+              <tr>
+                <td><strong>Батарея (16S) → инвертор</strong> (DC, 48 В)</td>
+                <td>Гибкий медный (ПВ3, КГ)</td><td>25–35 мм²</td>
+                <td>Инвертор 5 кВт — ток ~100–125 А. 25 мм² — минимум для коротких трасс; длиннее 1,5–2 м и ради запаса по нагреву — 35 мм².</td>
+              </tr>
+              <tr>
+                <td><strong>Внутри батареи</strong></td>
+                <td>Медные или алюминиевые шины (busbars)</td><td>штатные с ячейками (обычно 2×20 мм)</td>
+                <td>Штатные шины EVE рассчитаны на токи внутри 16S-цепочки и не требуют замены при BMS на 100–200 А.</td>
+              </tr>
+              <tr>
+                <td><strong>AC-выход инвертора → щит дома</strong></td>
+                <td>ВВГнг-LS или аналог</td><td>6 мм² (5 кВт) / 10 мм² (8–10 кВт)</td>
+                <td>Здесь ~23 А (5 кВт) или ~45 А (10 кВт) — правила для переменного тока с учётом работы инвертора в режиме ИБП.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note-box mt-24 reveal">
+          <b>Практическое правило:</b> если трасса от батареи до инвертора длиннее 2–3 метров — переходите на 35 мм² или даже 50 мм², чтобы избежать лишнего нагрева и просадок напряжения под пиковой нагрузкой.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="switchgear" style="background:var(--bg-soft)">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Защита</span>
+          <h2>Коммутационная и защитная аппаратура</h2>
+          <p class="lead">Защита делится на две независимые системы — DC-сторону (панели и батарея) и AC-сторону (сеть и нагрузки). Смешивать нельзя: автомат на 230 В переменного тока может небезопасно вести себя при 48 В постоянного тока.</p>
+        </div>
+
+        <div class="product reveal">
+          <h3>DC-сторона: 48 В и солнечные струны</h3>
+          <div class="table-wrap" style="background:transparent;border:0">
+            <table>
+              <thead><tr><th>Место установки</th><th>Устройство</th><th>Расчёт номинала</th><th>Пример</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><strong>Батарея → инвертор</strong></td>
+                  <td>DC-автомат (2-полюсный) или предохранитель Class T</td><td>ток инвертора × 1,25</td>
+                  <td>Инвертор 5 кВт (~125 А) → <b style="color:var(--accent)">160 А</b></td>
+                </tr>
+                <tr>
+                  <td><strong>Панели → контроллер</strong> (каждая струна)</td>
+                  <td>DC-автомат или предохранитель</td><td>Isc струны × 1,56</td>
+                  <td>Isc = 11 А → <b style="color:var(--accent)">20 А</b> (11 × 1,56 = 17,2 → 20)</td>
+                </tr>
+                <tr>
+                  <td><strong>Объединённый массив → инвертор</strong></td>
+                  <td>DC-автомат (если струн несколько)</td><td>суммарный Isc × 1,56</td>
+                  <td>2 × 11 А = 22 А → <b style="color:var(--accent)">35 А</b> (34,3 → 35)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="note-box mt-24">
+            <b>Для батарейной линии предпочтителен предохранитель Class T:</b> высокая разрывная способность и быстрое гашение дуги постоянного тока. Если выбираете автомат — номинальное напряжение DC ≥ 58 В, лучше с запасом до 125 В.
+          </div>
+        </div>
+
+        <div class="product mt-24 reveal">
+          <h3>AC-сторона: сеть и резервные нагрузки</h3>
+          <p class="sub">Логика привычна для домашнего электрика, но с учётом двунаправленного потока энергии: инвертор может и потреблять, и отдавать.</p>
+          <div class="table-wrap" style="background:transparent;border:0">
+            <table>
+              <thead><tr><th>Место установки</th><th>Устройство</th><th>Номинал / характеристика</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><strong>Ввод от сети → инвертор</strong></td><td>Автомат (AC)</td>
+                  <td>ток сети × 1,25: однофазный ввод 5 кВт ≈ 23 А → <b style="color:var(--accent)">32 А</b></td>
+                </tr>
+                <tr>
+                  <td><strong>Инвертор → резервный щит (EPS)</strong></td><td>Автомат (AC)</td>
+                  <td>по мощности критических нагрузок: резервируем весь дом (5 кВт) → <b style="color:var(--accent)">32 А</b></td>
+                </tr>
+                <tr>
+                  <td><strong>Групповые линии в резервном щите</strong></td><td>Автоматы + УЗО/дифавтоматы</td>
+                  <td>стандартные 10 А и 16 А; УЗО — типа <b style="color:var(--accent)">A</b> или <b style="color:var(--accent)">B</b> (см. ниже)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="safety">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Многоуровневая защита</span>
+          <h2>Системы безопасности</h2>
+          <p class="lead">BMS — это «мозг», следящий за ячейками, но он не заменяет электрическую защиту и физические меры.</p>
+        </div>
+        <div class="grid-2">
+          <div class="card reveal">
+            <div class="icon">🧯</div>
+            <h3>УЗО и дифавтоматы: тип имеет значение</h3>
+            <p>Обычное УЗО типа AC может «ослепнуть» от постоянной составляющей тока утечки в цепях с гибридным инвертором.</p>
+            <p class="mt-24"><b>Тип A</b> — минимум для большинства современных гибридов: пульсирующие постоянные токи утечки до 6 мА. <b>Тип B</b> — строже: распознаёт гладкие постоянные утечки; обязателен, если требует паспорт инвертора (частая история у мощных моделей).</p>
+            <p class="mt-24"><b>Где ставить:</b> на вводе от сети к инвертору и на резервном выходе (EPS). Розеточные группы — стандартно, но с учётом влияния инвертора на контур заземления.</p>
+          </div>
+          <div class="card reveal">
+            <div class="icon blue">⛈️</div>
+            <h3>УЗИП: не роскошь, а необходимость</h3>
+            <p>Для солнечной станции и накопителя защита от импульсных перенапряжений обязательна — особенно когда панели на крыше.</p>
+            <p class="mt-24"><b>DC-сторона (панели):</b> УЗИП типа 2 на максимальное напряжение массива (например, 600 или 1000 В DC) — бережёт инвертор от грозовых импульсов с крыши. <b>AC-сторона (ввод в дом):</b> стандартный УЗИП типа 2, если его ещё нет на вводе, — защищает инвертор и технику от сетевых скачков.</p>
+          </div>
+          <div class="card reveal">
+            <div class="icon green">🌐</div>
+            <h3>Заземление и уравнивание потенциалов</h3>
+            <p>Фундамент безопасности: рамы солнечных модулей, корпус инвертора, металлический корпус батарейного шкафа и корпус DC-щита соединяются в единую систему и подключаются к главной заземляющей шине (ГЗШ) дома.</p>
+          </div>
+          <div class="card reveal">
+            <div class="icon">🌬️</div>
+            <h3>Вентиляция и пожаротушение LiFePO4</h3>
+            <p>LiFePO4 не выделяет газов при нормальной работе, но при аварии возможен выброс — не герметизируйте батарейный шкаф в жилом помещении: достаточно естественной циркуляции или вытяжки.</p>
+            <p class="mt-24"><b>Пожаротушение:</b> для DIY-систем на 5–15 кВт·ч газовые и аэрозольные системы избыточны — аварию предотвращают правильная электрическая защита и исправная BMS. Для коммерческих шкафов на 50+ кВт·ч уже имеет смысл смотреть на решения со встроенными модулями аэрозольного тушения.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="mounting" style="background:var(--bg-soft)">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Корпуса и крепёж</span>
+          <h2>Монтажное оборудование</h2>
+        </div>
+        <div class="grid-2">
+          <div class="product reveal">
+            <h3>Домашняя система (5–15 кВт·ч)</h3>
+            <ul>
+              <li><b>Батарейный бокс:</b> готовые DIY-боксы Seplos V4 или Deligreen V4 на 16S — корпус, крепления ячеек, шины и часто автомат 250 А на плюсовой клемме.</li>
+              <li><b>DC-щит:</b> небольшой навесной щит для DC-автомата батареи, предохранителей струн и, при необходимости, УЗИП.</li>
+              <li><b>Крепление панелей:</b> алюминиевые профили и прижимы; для скатных крыш — кровельные крюки, для плоских — опоры с балластом. Весь крепёж — нержавеющая сталь.</li>
+            </ul>
+          </div>
+          <div class="product reveal">
+            <h3>Коммерческая система (50–100+ кВт·ч)</h3>
+            <ul>
+              <li><b>Серверные шкафы (rackmount):</b> готовые 19-дюймовые под 16S-модули, часто с собственной BMS на модуль и параллельным объединением.</li>
+              <li><b>Шины постоянного тока:</b> медные, сечением под суммарный ток всех параллельных цепочек (16S2P, 16S5P и т.д.).</li>
+              <li><b>Батарейный комбинер-бокс:</b> промышленные решения (например, BTCB0606-120) — изолированная коммутация нескольких групп на 48 В.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="checklist">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Сводный чек-лист</span>
+          <h2>Минимальная обвязка системы на 5 кВт</h2>
+          <p class="lead">Инвертор 5 кВт + батарея 16S (14–16 кВт·ч) + 5–6 кВт панелей — вот что нужно докупить к ячейкам и панелям.</p>
+        </div>
+        <div class="product featured reveal">
+          <span class="tag">Чек-лист первой системы</span>
+          <ul>
+            <li><b>Кабели:</b> 25–35 мм² (батарея → инвертор), 4–6 мм² солнечный (панели), 6 мм² AC (ввод/вывод).</li>
+            <li><b>DC-защита:</b> автомат или предохранитель Class T на 160 А (батарея), автоматы 20 А на каждую струну панелей.</li>
+            <li><b>AC-защита:</b> автомат 32 А на вводе, УЗО типа A (или B по паспорту инвертора) на линии инвертора.</li>
+            <li><b>УЗИП:</b> DC типа 2 на линии панелей, AC типа 2 на вводе (если нет общего).</li>
+            <li><b>Заземление:</b> рамы панелей, корпус инвертора, шкаф АКБ и DC-щит — на ГЗШ.</li>
+            <li><b>Монтаж:</b> батарейный бокс (Seplos / Deligreen), профили и прижимы для панелей, DC-щит для автоматов.</li>
+          </ul>
+        </div>
+        <div class="note-box mt-24 reveal">
+          <b>Как это соединить?</b> Пошаговые схемы узлов — стринги, батарея, распределение GRID/LOAD — на странице <a href="wiring.html">«Схемы подключения»</a>.
+        </div>
+        <div class="note-box mt-24 reveal">
+          <b>Итог:</b> эта «обвязка» превращает ячейки EVE и панели JA Solar в систему, которая годами работает предсказуемо и безопасно.
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight">
+      <div class="container">
+        <div class="cta-band reveal">
+          <div>
+            <h2>Соберём обвязку под ваш объект</h2>
+            <p>Посчитаем токи и сечения, подберём автоматы, УЗИП и корпуса, смонтируем и проверим защиту в Челябинске и области.</p>
+          </div>
+          <a href="contacts.html" class="btn btn-primary">Получить расчёт</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="logo" style="margin-bottom:16px">
+            <span class="logo-icon">⚡</span>
+            <span>ЧИК ЭНЕРГИЯ<small>Челябинская инженерная компания</small></span>
+          </a>
+          <p>Продажа и установка систем резервного питания, аккумуляторов LiFePO4 и ESS-систем в Челябинске и Челябинской области.</p>
+        </div>
+        <div>
+          <h4>Разделы</h4>
+          <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="services.html">Монтаж и услуги</a></li>
+            <li><a href="calculator.html">Калькулятор автономии</a></li>
+            <li><a href="useful.html">Полезное</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Оборудование</h4>
+          <ul>
+            <li><a href="catalog.html#standart">ИБП-комплекты «Стандарт»</a></li>
+            <li><a href="catalog.html#premium">ESS «Премиум»</a></li>
+            <li><a href="catalog.html#accu">Аккумуляторы LiFePO4</a></li>
+            <li><a href="cells.html">Ячейки EVE и сборки батарей</a></li>
+            <li><a href="cell-selection.html">Выбор ячеек под инвертор</a></li>
+            <li><a href="solar-panels.html">Солнечные панели Tier-1</a></li>
+            <li><a href="cables-safety.html">Кабели, автоматы и защита</a></li>
+            <li><a href="catalog.html#inverters">Инверторы и гибриды</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Контакты</h4>
+          <ul>
+            <li><a href="tel:+73512309996"><b>+7 351 230-99-96</b></a></li>
+            <li>г. Челябинск, Челябинская область</li>
+            <li>Монтаж по всему Южному Уралу</li>
+          </ul>
+          <a href="tel:+73512309996" class="btn btn-primary btn-sm" style="margin-top:10px">Позвонить</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 ЧИК ЭНЕРГИЯ — Челябинская инженерная компания. Все права защищены. <a href="policy.html">Политика обработки ПДн</a></span>
+        <span>Цены на сайте ориентировочные и уточняются расчётом по объекту.</span>
+      </div>
+    </div>
+  </footer>
+
+  <a href="tel:+73512309996" class="float-call">📞 Позвонить</a>
+
+  <script src="js/main.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Кабели, автоматы и защита: обвязка системы 48 В",
+    "description": "Сечения кабелей для 48-вольтовых систем, DC/AC-защита, предохранители Class T, УЗО типа A/B, УЗИП, заземление и монтажное оборудование.",
+    "url": "https://morozzz174.github.io/chik-energy/cables-safety.html",
+    "author": { "@type": "Organization", "name": "ЧИК ЭНЕРГИЯ — Челябинская инженерная компания" },
+    "publisher": { "@type": "Organization", "name": "ЧИК ЭНЕРГИЯ" }
+  }
+  </script>
+</body>
+</html>
